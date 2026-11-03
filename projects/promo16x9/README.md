@@ -28,14 +28,14 @@ Put these two files in `public/audio/`. Each plays as soon as its file exists, a
 - `veron_vo_25s.wav`: voiceover
 - `music_bed.mp3`: music. Its level is set by `MUSIC_VOLUME` in `src/Promo.tsx`, currently a placeholder.
 
-Then paste the script's 51 words into `VO_WORDS` in `src/voCueSheet.ts`.
+`src/voCueSheet.ts` currently holds words and times from `Hale v1.mp3` (19.88 s), which is not yet wired into the film because it does not fit the 25-second scene timing.
 
 ## Files
 
 | File | What it holds |
 |---|---|
 | `src/timing.ts` | Every frame boundary, with comments |
-| `src/voCueSheet.ts` | Approximate frame per voiceover word. Even spacing, not real speech timing |
+| `src/voCueSheet.ts` | Each voiceover word with its spoken frame and an evenly spaced frame |
 | `src/brand.ts` | Colours, type, locked layout, asset names |
 | `src/parts.tsx` | Robots, headline, oversight layer, check mark |
 | `src/scenes.tsx` | The four scenes, the logo and the final fade |

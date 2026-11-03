@@ -1,17 +1,72 @@
-// Approximate frame for each voiceover word: 51 words spaced evenly across the 750-frame film.
-//
-// NOT FILLED IN YET. The 51-word voiceover script was not supplied, so `word` is null rather than invented.
-// Paste the script's words into VO_WORDS, in order. These frames are even spacing, not real speech timing.
-// Once public/audio/veron_vo_25s.wav exists, align it to get real word times, then replace this file.
+// Voiceover word cues, from "jobs/compliance and audit - veron video/Hale v1.mp3" (19.88 s, 50 words).
+// Words and times come from a Whisper transcript and have not been checked by ear.
+// The brief expected 51 words over 25 s, in public/audio/veron_vo_25s.wav. If a different take arrives, regenerate this.
 import {TOTAL_FRAMES} from './timing';
 
-export const VO_WORD_COUNT = 51;
-export const VO_WORDS: string[] = [];
+// [word, frame where the word starts in the audio, at 30 fps]
+const WORDS: [string, number][] = [
+  ["You", 0],
+  ["added", 7],
+  ["more", 15],
+  ["robots.", 25],
+  ["Now", 63],
+  ["you're", 67],
+  ["hiring", 73],
+  ["more", 82],
+  ["people", 89],
+  ["just", 101],
+  ["to", 124],
+  ["watch", 130],
+  ["them.", 140],
+  ["Veron", 164],
+  ["takes", 175],
+  ["over", 182],
+  ["the", 190],
+  ["oversight", 194],
+  ["workflow", 207],
+  ["with", 223],
+  ["qualified", 235],
+  ["engineers", 248],
+  ["behind", 265],
+  ["it.", 277],
+  ["Every", 297],
+  ["robot", 305],
+  ["identified,", 314],
+  ["every", 346],
+  ["action", 352],
+  ["recorded.", 364],
+  ["So", 394],
+  ["when", 397],
+  ["the", 401],
+  ["audit", 404],
+  ["comes,", 410],
+  ["your", 430],
+  ["records", 434],
+  ["are", 445],
+  ["already", 452],
+  ["there.", 464],
+  ["Scale", 484],
+  ["your", 494],
+  ["fleet,", 500],
+  ["not", 521],
+  ["your", 526],
+  ["overhead.", 532],
+  ["Book", 557],
+  ["a", 560],
+  ["Veron", 565],
+  ["demo.", 574],
+];
 
-export type VoCue = {index: number; word: string | null; frame: number};
+export type VoCue = {
+  index: number;
+  word: string;
+  spokenFrame: number; // where the word is actually spoken in this recording
+  evenFrame: number; // the approximate frame the brief asked for: words spaced evenly across all 750 frames
+};
 
-export const voCueSheet: VoCue[] = Array.from({length: VO_WORD_COUNT}, (_, index) => ({
+export const voCueSheet: VoCue[] = WORDS.map(([word, spokenFrame], index) => ({
   index,
-  word: VO_WORDS[index] ?? null,
-  frame: Math.round((index / VO_WORD_COUNT) * TOTAL_FRAMES),
+  word,
+  spokenFrame,
+  evenFrame: Math.round((index / WORDS.length) * TOTAL_FRAMES),
 }));
