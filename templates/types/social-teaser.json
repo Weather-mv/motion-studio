@@ -1,0 +1,73 @@
+{
+  "id": "social-teaser",
+  "label": "Social teaser",
+  "summary": "Silent-first clip that stops the scroll.",
+  "lengthSec": {
+    "min": 6,
+    "max": 20,
+    "default": 12
+  },
+  "ratios": [
+    "9x16",
+    "1x1",
+    "16x9"
+  ],
+  "pacing": {
+    "maxSylPerSec": 5,
+    "beatSec": {
+      "min": 1,
+      "max": 4
+    },
+    "maxStaticSec": 2,
+    "defaultTransition": "cut",
+    "transitionSec": 0.2
+  },
+  "retention": [
+    "Assume no sound: captions always on.",
+    "The first frame must already make sense.",
+    "Change the picture at least every 2 seconds.",
+    "Keep text clear of platform UI (see the safe zones).",
+    "Loop or end on a reason to tap."
+  ],
+  "needs": [
+    "Platform",
+    "Word-timed captions, if there is voiceover"
+  ],
+  "defaultScenes": [
+    "title",
+    "metric",
+    "iconGrid",
+    "beforeAfter",
+    "cta",
+    "logoReveal"
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "goal": "Stop the scroll on frame 0",
+      "share": 0.25,
+      "scene": "title",
+      "altScenes": [
+        "metric"
+      ]
+    },
+    {
+      "id": "tease",
+      "goal": "The surprising part",
+      "share": 0.4,
+      "scene": "iconGrid",
+      "altScenes": [
+        "beforeAfter"
+      ]
+    },
+    {
+      "id": "payoff",
+      "goal": "The reason to act",
+      "share": 0.35,
+      "scene": "cta",
+      "altScenes": [
+        "logoReveal"
+      ]
+    }
+  ]
+}

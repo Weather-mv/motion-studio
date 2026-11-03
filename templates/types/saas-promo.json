@@ -1,0 +1,95 @@
+{
+  "id": "saas-promo",
+  "label": "SaaS promo",
+  "summary": "Short brand-led promise for a product, built to earn a click.",
+  "lengthSec": {
+    "min": 15,
+    "max": 45,
+    "default": 30
+  },
+  "ratios": [
+    "16x9",
+    "9x16",
+    "1x1"
+  ],
+  "pacing": {
+    "maxSylPerSec": 4.5,
+    "beatSec": {
+      "min": 1.5,
+      "max": 7
+    },
+    "maxStaticSec": 3,
+    "defaultTransition": "cut",
+    "transitionSec": 0.3
+  },
+  "retention": [
+    "Hook with the pain or a question in the first second.",
+    "One promise per beat, cut on the spoken word.",
+    "Show the product within the first third.",
+    "On-screen words are fewer than spoken words.",
+    "End on one CTA, held long enough to read."
+  ],
+  "needs": [
+    "CTA text and URL",
+    "Logo",
+    "Claims confirmed by the client"
+  ],
+  "defaultScenes": [
+    "title",
+    "quote",
+    "deviceMockup",
+    "iconGrid",
+    "chart",
+    "beforeAfter",
+    "cta",
+    "logoReveal"
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "goal": "Name the pain or ask the question",
+      "share": 0.15,
+      "scene": "title",
+      "altScenes": [
+        "quote"
+      ]
+    },
+    {
+      "id": "solution",
+      "goal": "The product answers it",
+      "share": 0.3,
+      "scene": "deviceMockup",
+      "altScenes": [
+        "iconGrid"
+      ]
+    },
+    {
+      "id": "proof",
+      "goal": "Why to believe it",
+      "share": 0.25,
+      "scene": "iconGrid",
+      "altScenes": [
+        "chart",
+        "quote"
+      ]
+    },
+    {
+      "id": "turn",
+      "goal": "The change for the viewer",
+      "share": 0.15,
+      "scene": "beforeAfter",
+      "altScenes": [
+        "title"
+      ]
+    },
+    {
+      "id": "cta",
+      "goal": "Logo and one action",
+      "share": 0.15,
+      "scene": "cta",
+      "altScenes": [
+        "logoReveal"
+      ]
+    }
+  ]
+}

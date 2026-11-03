@@ -1,0 +1,94 @@
+{
+  "id": "storyline",
+  "label": "Storyline",
+  "summary": "Character-led narrative: someone wants something, and something changes.",
+  "lengthSec": {
+    "min": 30,
+    "max": 120,
+    "default": 60
+  },
+  "ratios": [
+    "16x9",
+    "9x16",
+    "1x1"
+  ],
+  "pacing": {
+    "maxSylPerSec": 3.8,
+    "beatSec": {
+      "min": 3,
+      "max": 12
+    },
+    "maxStaticSec": 4,
+    "defaultTransition": "fade",
+    "transitionSec": 0.5
+  },
+  "retention": [
+    "Open on the character in a moment, not on the brand.",
+    "Show the stakes before the solution.",
+    "Each beat changes the situation.",
+    "Keep the brand out until the turn.",
+    "Let the ending breathe before the CTA."
+  ],
+  "needs": [
+    "Who the character is",
+    "What changes for them",
+    "Approval that the story is illustrative, or real story sign-off"
+  ],
+  "defaultScenes": [
+    "title",
+    "threeStage",
+    "alert",
+    "quote",
+    "logoReveal",
+    "beforeAfter",
+    "timeline",
+    "cta"
+  ],
+  "beats": [
+    {
+      "id": "setup",
+      "goal": "The character and their normal day",
+      "share": 0.2,
+      "scene": "title",
+      "altScenes": [
+        "threeStage"
+      ]
+    },
+    {
+      "id": "tension",
+      "goal": "What goes wrong",
+      "share": 0.2,
+      "scene": "alert",
+      "altScenes": [
+        "title"
+      ]
+    },
+    {
+      "id": "turn",
+      "goal": "The moment things change",
+      "share": 0.2,
+      "scene": "quote",
+      "altScenes": [
+        "logoReveal"
+      ]
+    },
+    {
+      "id": "resolve",
+      "goal": "The new normal",
+      "share": 0.25,
+      "scene": "beforeAfter",
+      "altScenes": [
+        "timeline"
+      ]
+    },
+    {
+      "id": "cta",
+      "goal": "Brand and one action",
+      "share": 0.15,
+      "scene": "cta",
+      "altScenes": [
+        "logoReveal"
+      ]
+    }
+  ]
+}

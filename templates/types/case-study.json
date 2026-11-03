@@ -1,0 +1,104 @@
+{
+  "id": "case-study",
+  "label": "Case study",
+  "summary": "One customer, one problem, one measured result.",
+  "lengthSec": {
+    "min": 45,
+    "max": 120,
+    "default": 75
+  },
+  "ratios": [
+    "16x9",
+    "9x16",
+    "1x1"
+  ],
+  "pacing": {
+    "maxSylPerSec": 3.6,
+    "beatSec": {
+      "min": 4,
+      "max": 12
+    },
+    "maxStaticSec": 4,
+    "defaultTransition": "fade",
+    "transitionSec": 0.4
+  },
+  "retention": [
+    "Lead with the result, then earn it.",
+    "Name the customer only with written permission.",
+    "Every number needs a source in claims.json.",
+    "Use a real quote or none; never paraphrase into quote marks.",
+    "Show one chart, not a dashboard."
+  ],
+  "needs": [
+    "Customer permission",
+    "Source for every result",
+    "Approved quote, if one is used"
+  ],
+  "defaultScenes": [
+    "metric",
+    "title",
+    "iconGrid",
+    "timeline",
+    "stepFlow",
+    "chart",
+    "quote",
+    "cta",
+    "logoReveal"
+  ],
+  "beats": [
+    {
+      "id": "result",
+      "goal": "The headline result",
+      "share": 0.12,
+      "scene": "metric",
+      "altScenes": [
+        "title"
+      ]
+    },
+    {
+      "id": "customer",
+      "goal": "Who they are and what they faced",
+      "share": 0.18,
+      "scene": "title",
+      "altScenes": [
+        "iconGrid"
+      ]
+    },
+    {
+      "id": "approach",
+      "goal": "What they did",
+      "share": 0.22,
+      "scene": "timeline",
+      "altScenes": [
+        "stepFlow"
+      ]
+    },
+    {
+      "id": "evidence",
+      "goal": "The numbers",
+      "share": 0.2,
+      "scene": "chart",
+      "altScenes": [
+        "metric"
+      ]
+    },
+    {
+      "id": "voice",
+      "goal": "In their words",
+      "share": 0.16,
+      "scene": "quote",
+      "altScenes": [
+        "title"
+      ]
+    },
+    {
+      "id": "cta",
+      "goal": "One action",
+      "share": 0.12,
+      "scene": "cta",
+      "altScenes": [
+        "logoReveal"
+      ]
+    }
+  ]
+}

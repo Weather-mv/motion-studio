@@ -1,0 +1,110 @@
+{
+  "id": "saas-demo",
+  "label": "SaaS demo",
+  "summary": "Walks through the real product doing one job from start to finish.",
+  "lengthSec": {
+    "min": 60,
+    "max": 180,
+    "default": 90
+  },
+  "ratios": [
+    "16x9",
+    "9x16",
+    "1x1"
+  ],
+  "pacing": {
+    "maxSylPerSec": 3.6,
+    "beatSec": {
+      "min": 4,
+      "max": 14
+    },
+    "maxStaticSec": 5,
+    "defaultTransition": "fade",
+    "transitionSec": 0.4
+  },
+  "retention": [
+    "Show the finished result in the opening seconds, then rewind to how.",
+    "Follow one user and one task; do not tour the menu.",
+    "Zoom to what matters whenever the cursor acts.",
+    "Every cursor move needs a reason in the voiceover.",
+    "Use real screens when supplied, and say so when UI is illustrative."
+  ],
+  "needs": [
+    "Real product screens, or written approval for illustrative UI",
+    "One user task to follow"
+  ],
+  "defaultScenes": [
+    "deviceMockup",
+    "title",
+    "iconGrid",
+    "cursorDemo",
+    "stepFlow",
+    "cta",
+    "logoReveal"
+  ],
+  "beats": [
+    {
+      "id": "outcome",
+      "goal": "The result the viewer will get",
+      "share": 0.1,
+      "scene": "deviceMockup",
+      "altScenes": [
+        "title"
+      ]
+    },
+    {
+      "id": "setup",
+      "goal": "Who the user is and what they need",
+      "share": 0.1,
+      "scene": "title",
+      "altScenes": [
+        "iconGrid"
+      ]
+    },
+    {
+      "id": "step-1",
+      "goal": "First action in the product",
+      "share": 0.2,
+      "scene": "cursorDemo",
+      "altScenes": [
+        "deviceMockup"
+      ]
+    },
+    {
+      "id": "step-2",
+      "goal": "Second action, with a zoom callout",
+      "share": 0.25,
+      "scene": "cursorDemo",
+      "altScenes": [
+        "deviceMockup"
+      ]
+    },
+    {
+      "id": "step-3",
+      "goal": "Third action and the result",
+      "share": 0.2,
+      "scene": "cursorDemo",
+      "altScenes": [
+        "deviceMockup"
+      ]
+    },
+    {
+      "id": "recap",
+      "goal": "What was done, in three steps",
+      "share": 0.08,
+      "scene": "stepFlow",
+      "altScenes": [
+        "iconGrid"
+      ]
+    },
+    {
+      "id": "cta",
+      "goal": "One action",
+      "share": 0.07,
+      "scene": "cta",
+      "altScenes": [
+        "logoReveal"
+      ]
+    }
+  ]
+}

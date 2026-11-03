@@ -1,0 +1,17 @@
+{
+  "title": {"headline": "OPEN: hook text", "sub": "OPEN: supporting line"},
+  "featureGrid": {"title": "OPEN: heading", "items": ["OPEN: item", "OPEN: item", "OPEN: item"]},
+  "metric": {"value": 0, "label": "OPEN: what is measured, and its source"},
+  "stepFlow": {"title": "OPEN: heading", "steps": [{"title": "OPEN: step"}, {"title": "OPEN: step"}, {"title": "OPEN: step"}]},
+  "alert": {"badge": "OPEN: badge", "headline": "OPEN: headline", "tone": "warn"},
+  "threeStage": {"count": 5, "headline": "OPEN: headline"},
+  "cta": {"headline": "OPEN: one promise", "button": "OPEN: button text", "url": "OPEN: url"},
+  "deviceMockup": {"device": "laptop", "headline": "OPEN: what the screen shows", "illustrative": true},
+  "cursorDemo": {"headline": "OPEN: what the user does", "illustrative": true, "path": [{"x": 20, "y": 30, "at": 0}, {"x": 60, "y": 55, "at": 1, "click": true}]},
+  "beforeAfter": {"before": {"label": "OPEN: before", "items": ["OPEN: item"]}, "after": {"label": "OPEN: after", "items": ["OPEN: item"]}},
+  "chart": {"type": "bar", "title": "OPEN: the insight, as a sentence", "source": "OPEN: data source", "labels": ["OPEN", "OPEN", "OPEN"], "series": [{"name": "OPEN: series", "values": [1, 2, 3]}]},
+  "quote": {"text": "OPEN: approved quote, exact words", "author": "OPEN: name"},
+  "timeline": {"title": "OPEN: heading", "items": [{"label": "OPEN", "title": "OPEN: event"}, {"label": "OPEN", "title": "OPEN: event"}, {"label": "OPEN", "title": "OPEN: event"}]},
+  "logoReveal": {"tagline": "OPEN: confirmed tagline, or remove"},
+  "iconGrid": {"title": "OPEN: heading", "items": [{"icon": "check", "label": "OPEN: item"}, {"icon": "check", "label": "OPEN: item"}, {"icon": "check", "label": "OPEN: item"}]}
+}

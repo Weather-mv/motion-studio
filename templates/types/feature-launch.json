@@ -1,0 +1,93 @@
+{
+  "id": "feature-launch",
+  "label": "Feature launch",
+  "summary": "Announces one new capability to people who already know the product.",
+  "lengthSec": {
+    "min": 15,
+    "max": 60,
+    "default": 30
+  },
+  "ratios": [
+    "16x9",
+    "9x16",
+    "1x1"
+  ],
+  "pacing": {
+    "maxSylPerSec": 4.2,
+    "beatSec": {
+      "min": 2,
+      "max": 8
+    },
+    "maxStaticSec": 3,
+    "defaultTransition": "slide",
+    "transitionSec": 0.35
+  },
+  "retention": [
+    "Say what is new in the first 2 seconds.",
+    "Show the feature working, not a list of benefits.",
+    "Name the old pain only once.",
+    "Say where to find it.",
+    "Use a real launch date or none at all."
+  ],
+  "needs": [
+    "Feature name and availability confirmed",
+    "Real screens, or approval for illustrative UI"
+  ],
+  "defaultScenes": [
+    "logoReveal",
+    "title",
+    "beforeAfter",
+    "cursorDemo",
+    "deviceMockup",
+    "iconGrid",
+    "stepFlow",
+    "cta"
+  ],
+  "beats": [
+    {
+      "id": "announce",
+      "goal": "Name the new feature",
+      "share": 0.15,
+      "scene": "logoReveal",
+      "altScenes": [
+        "title"
+      ]
+    },
+    {
+      "id": "pain",
+      "goal": "The old way, briefly",
+      "share": 0.15,
+      "scene": "beforeAfter",
+      "altScenes": [
+        "title"
+      ]
+    },
+    {
+      "id": "show",
+      "goal": "The feature working",
+      "share": 0.4,
+      "scene": "cursorDemo",
+      "altScenes": [
+        "deviceMockup"
+      ]
+    },
+    {
+      "id": "benefits",
+      "goal": "Up to three outcomes",
+      "share": 0.15,
+      "scene": "iconGrid",
+      "altScenes": [
+        "stepFlow"
+      ]
+    },
+    {
+      "id": "cta",
+      "goal": "Where to find it",
+      "share": 0.15,
+      "scene": "cta",
+      "altScenes": [
+        "logoReveal"
+      ]
+    }
+  ]
+}

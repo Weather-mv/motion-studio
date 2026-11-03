@@ -1,0 +1,106 @@
+{
+  "id": "explainer",
+  "label": "Explainer",
+  "summary": "Teaches one idea to someone who does not know it yet.",
+  "lengthSec": {
+    "min": 45,
+    "max": 120,
+    "default": 75
+  },
+  "ratios": [
+    "16x9",
+    "9x16",
+    "1x1"
+  ],
+  "pacing": {
+    "maxSylPerSec": 3.6,
+    "beatSec": {
+      "min": 4,
+      "max": 12
+    },
+    "maxStaticSec": 4,
+    "defaultTransition": "fade",
+    "transitionSec": 0.4
+  },
+  "retention": [
+    "State the question the viewer has in the first 3 seconds.",
+    "Introduce one concept per beat and show it as it is named.",
+    "Use an analogy or diagram before any detail.",
+    "Change the visual at least every 4 seconds, even if only by adding an element.",
+    "Recap the one takeaway before the CTA."
+  ],
+  "needs": [
+    "One-sentence takeaway",
+    "Facts or script from the client"
+  ],
+  "defaultScenes": [
+    "title",
+    "quote",
+    "iconGrid",
+    "stepFlow",
+    "deviceMockup",
+    "threeStage",
+    "timeline",
+    "beforeAfter",
+    "chart",
+    "cta",
+    "logoReveal"
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "goal": "Ask the question or name the confusion",
+      "share": 0.1,
+      "scene": "title",
+      "altScenes": [
+        "quote"
+      ]
+    },
+    {
+      "id": "problem",
+      "goal": "Why this matters to the viewer",
+      "share": 0.15,
+      "scene": "iconGrid",
+      "altScenes": [
+        "title"
+      ]
+    },
+    {
+      "id": "concept",
+      "goal": "The core idea, in one picture",
+      "share": 0.25,
+      "scene": "stepFlow",
+      "altScenes": [
+        "deviceMockup",
+        "threeStage"
+      ]
+    },
+    {
+      "id": "how",
+      "goal": "How it works, step by step",
+      "share": 0.25,
+      "scene": "timeline",
+      "altScenes": [
+        "stepFlow"
+      ]
+    },
+    {
+      "id": "example",
+      "goal": "One concrete example",
+      "share": 0.15,
+      "scene": "beforeAfter",
+      "altScenes": [
+        "chart"
+      ]
+    },
+    {
+      "id": "cta",
+      "goal": "Recap and one action",
+      "share": 0.1,
+      "scene": "cta",
+      "altScenes": [
+        "logoReveal"
+      ]
+    }
+  ]
+}

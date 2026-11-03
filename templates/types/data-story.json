@@ -1,0 +1,91 @@
+{
+  "id": "data-story",
+  "label": "Data story",
+  "summary": "One insight from one dataset, built up until it lands.",
+  "lengthSec": {
+    "min": 30,
+    "max": 90,
+    "default": 45
+  },
+  "ratios": [
+    "16x9",
+    "9x16",
+    "1x1"
+  ],
+  "pacing": {
+    "maxSylPerSec": 3.6,
+    "beatSec": {
+      "min": 4,
+      "max": 12
+    },
+    "maxStaticSec": 5,
+    "defaultTransition": "fade",
+    "transitionSec": 0.4
+  },
+  "retention": [
+    "State the insight as a claim, not a topic.",
+    "Build the chart in the order the voice explains it.",
+    "One axis per chart; two measures means two charts.",
+    "Highlight the one mark that matters.",
+    "Show the data source on screen."
+  ],
+  "needs": [
+    "Dataset and source",
+    "Permission to publish the numbers"
+  ],
+  "defaultScenes": [
+    "title",
+    "metric",
+    "iconGrid",
+    "chart",
+    "timeline",
+    "cta"
+  ],
+  "beats": [
+    {
+      "id": "claim",
+      "goal": "The insight in one sentence",
+      "share": 0.15,
+      "scene": "title",
+      "altScenes": [
+        "metric"
+      ]
+    },
+    {
+      "id": "context",
+      "goal": "What is being measured",
+      "share": 0.15,
+      "scene": "iconGrid",
+      "altScenes": [
+        "title"
+      ]
+    },
+    {
+      "id": "build",
+      "goal": "The chart builds",
+      "share": 0.3,
+      "scene": "chart",
+      "altScenes": [
+        "timeline"
+      ]
+    },
+    {
+      "id": "reveal",
+      "goal": "The mark that matters",
+      "share": 0.2,
+      "scene": "metric",
+      "altScenes": [
+        "chart"
+      ]
+    },
+    {
+      "id": "meaning",
+      "goal": "So what, and one action",
+      "share": 0.2,
+      "scene": "cta",
+      "altScenes": [
+        "title"
+      ]
+    }
+  ]
+}

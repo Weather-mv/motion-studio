@@ -1,0 +1,111 @@
+{
+  "id": "tutorial",
+  "label": "Tutorial",
+  "summary": "Teaches a viewer to complete one task by themselves.",
+  "lengthSec": {
+    "min": 60,
+    "max": 240,
+    "default": 120
+  },
+  "ratios": [
+    "16x9",
+    "9x16",
+    "1x1"
+  ],
+  "pacing": {
+    "maxSylPerSec": 3.4,
+    "beatSec": {
+      "min": 4,
+      "max": 16
+    },
+    "maxStaticSec": 6,
+    "defaultTransition": "fade",
+    "transitionSec": 0.4
+  },
+  "retention": [
+    "Say what the viewer will be able to do, and what they need first.",
+    "One step per beat, numbered on screen.",
+    "Zoom in before anything small is clicked.",
+    "Pause on the result of each step long enough to compare.",
+    "End with the finished state and where to go next."
+  ],
+  "needs": [
+    "The exact steps, tested",
+    "Real screens, or approval for illustrative UI"
+  ],
+  "defaultScenes": [
+    "title",
+    "deviceMockup",
+    "stepFlow",
+    "timeline",
+    "cursorDemo",
+    "beforeAfter",
+    "cta",
+    "iconGrid"
+  ],
+  "beats": [
+    {
+      "id": "goal",
+      "goal": "What you will be able to do",
+      "share": 0.08,
+      "scene": "title",
+      "altScenes": [
+        "deviceMockup"
+      ]
+    },
+    {
+      "id": "overview",
+      "goal": "The steps at a glance",
+      "share": 0.1,
+      "scene": "stepFlow",
+      "altScenes": [
+        "timeline"
+      ]
+    },
+    {
+      "id": "step-1",
+      "goal": "Step 1",
+      "share": 0.22,
+      "scene": "cursorDemo",
+      "altScenes": [
+        "deviceMockup"
+      ]
+    },
+    {
+      "id": "step-2",
+      "goal": "Step 2",
+      "share": 0.22,
+      "scene": "cursorDemo",
+      "altScenes": [
+        "deviceMockup"
+      ]
+    },
+    {
+      "id": "step-3",
+      "goal": "Step 3",
+      "share": 0.22,
+      "scene": "cursorDemo",
+      "altScenes": [
+        "deviceMockup"
+      ]
+    },
+    {
+      "id": "result",
+      "goal": "The finished state",
+      "share": 0.08,
+      "scene": "beforeAfter",
+      "altScenes": [
+        "deviceMockup"
+      ]
+    },
+    {
+      "id": "next",
+      "goal": "Where to go next",
+      "share": 0.08,
+      "scene": "cta",
+      "altScenes": [
+        "iconGrid"
+      ]
+    }
+  ]
+}
