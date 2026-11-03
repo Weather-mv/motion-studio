@@ -28,7 +28,7 @@ export const LAYOUT = {
   // The brief says 240 px wide, but the logo file is square, so 240 px would run into the headline at y 220.
   // 140 px ends exactly at y 220 and keeps the logo uncropped.
   logo: {x: 96, y: 80, width: 140},
-  logoCentred: {width: 300, x: 960 - 150, y: 540 - 150},
+  endCard: {logo: 420, logoTop: 170, buttonTop: 630, buttonHeight: 104},
   logoOnLayer: {width: 240},
   headline: {x: 96, y: 220, width: 1000},
   subheadingGap: 32,

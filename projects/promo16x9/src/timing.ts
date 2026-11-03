@@ -3,7 +3,7 @@
 export const FPS = 30;
 export const WIDTH = 1920;
 export const HEIGHT = 1080;
-export const TOTAL_FRAMES = 650; // 21.67 s. The voice ends near frame 596; the rest is the end card.
+export const TOTAL_FRAMES = 675; // 22.5 s. The voice ends near frame 596; the rest is the end card.
 
 export const SCENE = {
   multiplication: {from: 0, to: 164}, // "You added more robots..." to just before "Veron"
@@ -59,19 +59,28 @@ export const S3 = {
 };
 
 export const S4 = {
+  // Part 1: the fleet scales, the oversight stays one layer.
   headlineInkAt: 484, // "Scale": "Scale the fleet."
-  layerFrom: 484, // "Scale": steady oversight layer arrives
-  layerTo: 504,
-  fleetAt: 500, // "fleet"
+  robotsFrom: 484, // "Scale": robots start to multiply across the frame
+  robotStagger: 1, // one more robot every frame, finished just after "not"
   headlineCobaltAt: 521, // "not": "Not the overhead."
-  logoCentreFrom: 557, // "Book": top-left logo starts to fade out
-  logoCornerOutTo: 565, // top-left logo gone
-  logoCentreInFrom: 561, // centred logo starts to fade in
-  logoCentreTo: 577, // centred logo settled
-  ctaAt: 557, // "Book": CTA pill scales in with a spring
-  ctaSettleFrames: 19, // the spring reaches exactly 1 one frame after this, at frame 577
-  holdFrom: 577, // nothing moves from here...
-  holdTo: TOTAL_FRAMES - 10, // ...to here: 63 static frames
+  layerFrom: 521, // "not": one cobalt layer draws under the whole fleet
+  layerTo: 537,
+  partOneOutFrom: 549, // everything clears before "Book"
+  partOneOutTo: 557,
+  // Part 2: the end card.
+  logoAt: 557, // "Book": logo arrives, settled by frame 575
+  logoFrames: 18,
+  buttonAt: 562, // "a": button arrives under the logo
+  buttonSettleFrames: 19, // the spring reaches exactly 1 one frame after this, at frame 582
+  cursorFrom: 566, // "Veron": cursor glides in from the lower right
+  cursorTo: 584,
+  tapAt: 585, // during "demo.": cursor taps the button
+  tapDownFrames: 6, // pressed by frame 591
+  tapUpFrames: 6, // released by frame 597
+  rippleFrames: 20, // tap ring gone by frame 605
+  holdFrom: 605, // nothing moves from here...
+  holdTo: TOTAL_FRAMES - 10, // ...to here: 60 static frames
   fadeFrom: TOTAL_FRAMES - 10, // fade to periwinkle over the last 10 frames
   fadeTo: TOTAL_FRAMES,
 };

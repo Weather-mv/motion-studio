@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {AbsoluteFill, Audio, Img, cancelRender, continueRender, delayRender, staticFile} from 'remotion';
 import {loadFont} from '@remotion/fonts';
 import {ASSET, FONT} from './brand';
-import {DeskStack, FadeOut, MainLogo, Scene1, Scene2, Scene3, Scene4} from './scenes';
+import {DeskStack, EndCard, FadeOut, MainLogo, Scene1, Scene2, Scene3, Scene4} from './scenes';
 
 export const Promo: React.FC = () => {
   // Roboto loads from public/Roboto. Each frame waits for it, so nothing captures in a fallback font.
@@ -25,6 +25,7 @@ export const Promo: React.FC = () => {
       <Scene3 />
       <Scene4 />
       <MainLogo />
+      <EndCard />
       <FadeOut />
       {/* Voice starts on frame 0. All scene timing in timing.ts follows it. */}
       <Audio src={staticFile(ASSET.voiceover)} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
-import {ASSET, COLOR, LAYOUT, TYPE, glass, withAlpha} from './brand';
+import {ASSET, COLOR, FONT, LAYOUT, TYPE, glass, withAlpha} from './brand';
 import {CheckMark, Fleet, Headline, OversightLayer, RobotTile, clamp, inOutCubic, useArrive} from './parts';
 import {S1, S2, S3, S4, SCENE} from './timing';
 
@@ -154,42 +154,90 @@ export const Scene3: React.FC = () => {
   );
 };
 
+// Robots fill the frame in a staircase that echoes the desk stack in scene 1, but here they all stand on one layer.
+const FIELD = {x: 96, tile: 124, pitch: 140, columns: 14, lowestRowY: 620, layerTop: 772, layerHeight: 112};
+const fieldSlots = Array.from({length: FIELD.columns}).flatMap((_, column) => {
+  const x = FIELD.x + column * FIELD.pitch;
+  const rows = x >= LAYOUT.graphicLeft ? 4 : 2; // taller only in the right 40%, so no robot sits behind the headline
+  return Array.from({length: rows}).map((__, row) => ({x, y: FIELD.lowestRowY - row * FIELD.pitch}));
+});
+
 export const Scene4: React.FC = () => {
   const frame = useCurrentFrame();
-  const {fps} = useVideoConfig();
-  const {from, to} = SCENE.close;
-  if (frame < from) return null;
-  const layer = interpolate(frame, [S4.layerFrom, S4.layerTo], [0, 1], clamp);
-  const cta = spring({frame: frame - S4.ctaAt, fps, durationInFrames: S4.ctaSettleFrames, config: {damping: 14}});
+  const arrive = useArrive();
+  if (frame < SCENE.close.from || frame >= S4.partOneOutTo) return null;
+  const out = interpolate(frame, [S4.partOneOutFrom, S4.partOneOutTo], [1, 0], clamp);
+  const layer = interpolate(frame, [S4.layerFrom, S4.layerTo], [0, 1], {...clamp, easing: inOutCubic});
   return (
     <>
-      <Fleet at={S4.fleetAt} stagger={0} count={S1.robotCount} />
-      <OversightLayer opacity={layer} />
-      <Headline from={S4.headlineInkAt} cobaltAt={S4.headlineCobaltAt} to={to} ink="Scale the fleet." cobalt="Not the overhead." hold />
-      {/* Footer position from the locked layout: bottom-left, centred on y 960. 80 px tall, as the guideline's CTA pill. */}
-      <div style={{...glass(0.6), ...TYPE.footer, position: 'absolute', left: LAYOUT.margin, top: LAYOUT.footerY - 40, height: 80, padding: '0 44px', borderRadius: 40, display: 'flex', alignItems: 'center', opacity: frame >= S4.ctaAt ? 1 : 0, transform: `scale(${cta})`, transformOrigin: 'left center', whiteSpace: 'nowrap'}}>
-        Book a Demo
+      <Headline from={S4.headlineInkAt} cobaltAt={S4.headlineCobaltAt} to={S4.partOneOutTo} ink="Scale the fleet." cobalt="Not the overhead." />
+      <div style={{position: 'absolute', inset: 0, opacity: out}}>
+        {fieldSlots.map((slot, i) => {
+          const p = arrive(S4.robotsFrom + i * S4.robotStagger, 10);
+          return (
+            <div key={i} style={{position: 'absolute', left: slot.x, top: slot.y, opacity: p, transform: `translateY(${(1 - p) * 40}px) scale(${0.8 + 0.2 * p})`}}>
+              <RobotTile size={FIELD.tile} />
+            </div>
+          );
+        })}
+        {/* One layer under the whole fleet, drawn left to right and bleeding off the right edge. */}
+        <div style={{position: 'absolute', left: FIELD.x, top: FIELD.layerTop, width: 1920 - FIELD.x + 60, height: FIELD.layerHeight, borderRadius: 32, overflow: 'hidden', border: `3px solid ${COLOR.cobalt}`, boxShadow: `0 20px 70px ${withAlpha(COLOR.cobalt, 0.35)}`, transformOrigin: 'left center', transform: `scaleX(${layer})`, opacity: layer}}>
+          <Img src={staticFile(ASSET.frosted)} style={{position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover'}} />
+          <div style={{position: 'absolute', inset: 0, background: withAlpha(COLOR.cobalt, 0.72)}} />
+        </div>
       </div>
     </>
   );
 };
 
-// One logo at a time: top-left, except while it sits on the layer at the end of scene 2.
-export const MainLogo: React.FC = () => {
+const Cursor: React.FC<{size: number}> = ({size}) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" style={{display: 'block'}}>
+    <path d="M4 3l6 18 3-7.500L20.500 11z" fill={COLOR.ink} stroke={COLOR.white} strokeWidth={1.5} strokeLinejoin="round" />
+  </svg>
+);
+
+// End card: logo, blue button under it, cursor taps it on "demo". The user asked for this centred layout.
+export const EndCard: React.FC = () => {
   const frame = useCurrentFrame();
-  const {logo, logoCentred} = LAYOUT;
-  const away = interpolate(frame, [S2.logoAt - 8, S2.logoAt], [1, 0], clamp);
-  const back = interpolate(frame, [S3.layerOutFrom, S3.layerOutTo], [0, 1], clamp);
-  const leave = interpolate(frame, [S4.logoCentreFrom, S4.logoCornerOutTo], [1, 0], clamp);
-  const corner = frame < S3.layerOutFrom ? away : back * leave;
-  // The logo fades across instead of travelling, because a straight path would cross the headline.
-  const centred = interpolate(frame, [S4.logoCentreInFrom, S4.logoCentreTo], [0, 1], {...clamp, easing: inOutCubic});
+  const {fps} = useVideoConfig();
+  const arrive = useArrive();
+  if (frame < S4.logoAt) return null;
+  const {logo, logoTop, buttonTop, buttonHeight} = LAYOUT.endCard;
+  const logoIn = arrive(S4.logoAt, S4.logoFrames);
+  const buttonIn = spring({frame: frame - S4.buttonAt, fps, durationInFrames: S4.buttonSettleFrames, config: {damping: 14}});
+  const glide = interpolate(frame, [S4.cursorFrom, S4.cursorTo], [0, 1], {...clamp, easing: inOutCubic});
+  const down = interpolate(frame, [S4.tapAt, S4.tapAt + S4.tapDownFrames], [0, 1], clamp);
+  const up = interpolate(frame, [S4.tapAt + S4.tapDownFrames, S4.tapAt + S4.tapDownFrames + S4.tapUpFrames], [0, 1], clamp);
+  const press = down * (1 - up);
+  const ripple = interpolate(frame, [S4.tapAt, S4.tapAt + S4.rippleFrames], [0, 1], clamp);
+  const tip = {x: 1118, y: buttonTop + buttonHeight * 0.5}; // in the empty end of the button, so the cursor never covers its words
+  const from = {x: 1500, y: 1040};
+  const ringSize = 40 + 180 * ripple;
   return (
     <>
-      <Img src={staticFile(ASSET.logo)} style={{position: 'absolute', left: logo.x, top: logo.y, width: logo.width, height: logo.width, opacity: corner}} />
-      <Img src={staticFile(ASSET.logo)} style={{position: 'absolute', left: logoCentred.x, top: logoCentred.y, width: logoCentred.width, height: logoCentred.width, opacity: centred, transform: `scale(${0.92 + 0.08 * centred})`}} />
+      <Img src={staticFile(ASSET.logo)} style={{position: 'absolute', left: 960 - logo / 2, top: logoTop, width: logo, height: logo, opacity: logoIn, transform: `scale(${0.9 + 0.1 * logoIn})`}} />
+      <div style={{position: 'absolute', left: 0, width: 1920, top: buttonTop, display: 'flex', justifyContent: 'center'}}>
+        <div style={{height: buttonHeight, padding: '0 72px', borderRadius: buttonHeight / 2, background: COLOR.cobalt, color: COLOR.white, fontFamily: FONT, fontWeight: 700, fontSize: 48, display: 'flex', alignItems: 'center', whiteSpace: 'nowrap', boxShadow: `0 18px 50px ${withAlpha(COLOR.cobalt, 0.35)}`, opacity: frame >= S4.buttonAt ? 1 : 0, transform: `scale(${buttonIn * (1 - 0.05 * press)})`}}>
+          Book a Demo
+        </div>
+      </div>
+      {ripple > 0 && ripple < 1 ? <div style={{position: 'absolute', left: tip.x - ringSize / 2, top: tip.y - ringSize / 2, width: ringSize, height: ringSize, borderRadius: '50%', border: `4px solid ${COLOR.white}`, boxSizing: 'border-box', opacity: 1 - ripple}} /> : null}
+      <div style={{position: 'absolute', left: from.x + (tip.x - from.x) * glide - 11, top: from.y + (tip.y - from.y) * glide - 8, opacity: interpolate(frame, [S4.cursorFrom, S4.cursorFrom + 5], [0, 1], clamp), transform: `scale(${1 - 0.14 * press})`, transformOrigin: '11px 8px'}}>
+        <Cursor size={68} />
+      </div>
     </>
   );
+};
+
+// The corner logo stays until the end card, except while it sits on the layer at the end of scene 2.
+export const MainLogo: React.FC = () => {
+  const frame = useCurrentFrame();
+  const {logo} = LAYOUT;
+  const away = interpolate(frame, [S2.logoAt - 8, S2.logoAt], [1, 0], clamp);
+  const back = interpolate(frame, [S3.layerOutFrom, S3.layerOutTo], [0, 1], clamp);
+  const leave = interpolate(frame, [S4.partOneOutFrom, S4.partOneOutTo], [1, 0], clamp);
+  const opacity = frame < S3.layerOutFrom ? away : back * leave;
+  return <Img src={staticFile(ASSET.logo)} style={{position: 'absolute', left: logo.x, top: logo.y, width: logo.width, height: logo.width, opacity}} />;
 };
 
 export const FadeOut: React.FC = () => {
