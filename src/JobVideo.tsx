@@ -5,12 +5,13 @@ import {fade} from '@remotion/transitions/fade';
 import {slide} from '@remotion/transitions/slide';
 import {registry} from './scenes/registry';
 import type {SceneName} from './scenes/schemas';
+import {AuditProbe, type AuditMode} from './core/AuditProbe';
 import {CaptionsOverlay} from './core/CaptionsOverlay';
 import {motionTokens, toEasing} from './core/motion';
 import {ThemeProvider} from './core/theme';
 import type {Beat, Brand, Plan, Word} from './core/types';
 
-export type JobVideoProps = {jobId: string; plan: Plan; brand: Brand; words?: Word[]};
+export type JobVideoProps = {jobId: string; plan: Plan; brand: Brand; words?: Word[]; audit?: AuditMode};
 
 const BLUR_PX = 24;
 const BLUR_EDGE_SCALE = 0.12;
@@ -26,7 +27,7 @@ const BeatBlur: React.FC<React.PropsWithChildren<{blurIn: number; blurOut: numbe
   return <AbsoluteFill style={px > 0 ? {filter: `blur(${px}px)`, transform: `scale(${scale})`} : undefined}>{children}</AbsoluteFill>;
 };
 
-export const JobVideo: React.FC<JobVideoProps> = ({jobId, plan, brand, words}) => {
+export const JobVideo: React.FC<JobVideoProps> = ({jobId, plan, brand, words, audit}) => {
   const {fps, audio, captions} = plan.meta;
   const fontCss = (brand.fontFiles ?? [])
     .map((f) => `@font-face{font-family:'${f.family}';src:url('${staticFile(`jobs/${jobId}/${f.file}`)}');font-weight:${f.weight ?? 400};}`)
@@ -80,10 +81,11 @@ export const JobVideo: React.FC<JobVideoProps> = ({jobId, plan, brand, words}) =
 
   return (
     <ThemeProvider brand={brand} jobId={jobId}>
-      <AbsoluteFill>
+      <AbsoluteFill data-job-root>
         {fontCss ? <style>{fontCss}</style> : null}
         <TransitionSeries>{series}</TransitionSeries>
         {captions && words?.length && fontsReady ? <CaptionsOverlay words={words} config={captions} /> : null}
+        {audit ? <AuditProbe mode={audit} ready={fontsReady} /> : null}
         {audio ? <Audio src={staticFile(`jobs/${jobId}/${audio}`)} /> : null}
       </AbsoluteFill>
     </ThemeProvider>
