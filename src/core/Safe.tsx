@@ -1,10 +1,11 @@
 import React from 'react';
-import {AbsoluteFill, useVideoConfig} from 'remotion';
+import {AbsoluteFill} from 'remotion';
+import {useStage} from './stage';
 
-// Keeps content inside 5% margins (the safe zone).
+// Keeps content inside the safe zone for the video's ratio (src/core/safe-zones.json).
 export const Safe: React.FC<React.PropsWithChildren<{style?: React.CSSProperties}>> = ({children, style}) => {
-  const {width, height} = useVideoConfig();
+  const {safe, width, height} = useStage();
   return (
-    <AbsoluteFill style={{padding: `${height * 0.05}px ${width * 0.05}px`, ...style}}>{children}</AbsoluteFill>
+    <AbsoluteFill style={{paddingTop: safe.top, paddingBottom: height - safe.bottom, paddingLeft: safe.left, paddingRight: width - safe.right, ...style}}>{children}</AbsoluteFill>
   );
 };

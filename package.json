@@ -10,7 +10,8 @@
     "check": "node tools/check-job.mjs",
     "align": "python tools/align.py",
     "render": "node tools/render.mjs",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "docs:scenes": "node tools/gen-scenes-doc.mjs"
   },
   "dependencies": {
     "@huggingface/transformers": "4.2.0",

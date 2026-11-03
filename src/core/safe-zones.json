@@ -1,0 +1,5 @@
+{
+  "16x9": {"margin": 0.05, "rightInset": 0.05, "avoid": []},
+  "1x1": {"margin": 0.05, "rightInset": 0.05, "avoid": []},
+  "9x16": {"margin": 0.05, "rightInset": 0.1, "avoid": [{"name": "right rail", "x": 0.9, "y": 0.55, "w": 0.1, "h": 0.35}]}
+}

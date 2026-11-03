@@ -1,26 +1,16 @@
 import React from 'react';
 import {AbsoluteFill, Easing, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {useTheme} from '../core/theme';
+import {Background, alpha, glassStyle} from '../core/primitives';
 import type {Brand, SceneProps} from '../core/types';
 
 // Illustrative fleet UI, drawn in code: no real data, numbers or robot IDs. All timing comes from plan.json.
 // Layout follows the guideline's 1920x1080 post: 96 px margins, text column left, logo at x 96, y 80.
 const MARGIN = 96;
+export {Background, alpha, glassStyle};
+
 const GRID = {left: 768, top: 118, cardW: 198, cardH: 410, gap: 16, rowGap: 24};
 type Field = 'identity' | 'location' | 'status' | 'performance';
-
-export const alpha = (hex: string, a: number) => hex + Math.round(a * 255).toString(16).padStart(2, '0');
-
-export const glassStyle = (brand: Brand): React.CSSProperties => {
-  const tint = brand.glass?.tint ?? brand.colors.panel;
-  const opacity = brand.glass?.opacity ?? 0.2;
-  return {
-    background: alpha(tint, opacity),
-    backdropFilter: 'blur(18px)',
-    border: `1px solid ${alpha(tint, Math.min(1, opacity + 0.2))}`,
-    boxShadow: `0 12px 40px ${alpha(brand.colors.text, 0.08)}`,
-  };
-};
 
 // Seconds on the job timeline to a 0..1 reveal that starts exactly on the cue.
 export const useReveal = (beatStart: number) => {
@@ -34,15 +24,6 @@ export const useReveal = (beatStart: number) => {
       easing: Easing.out(Easing.cubic),
     });
   };
-};
-
-export const Background: React.FC = () => {
-  const {brand, jobId} = useTheme();
-  return brand.background ? (
-    <Img src={staticFile(`jobs/${jobId}/${brand.background}`)} style={{position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover'}} />
-  ) : (
-    <AbsoluteFill style={{background: brand.colors.bg}} />
-  );
 };
 
 export const Logo: React.FC<{px: number}> = ({px}) => {

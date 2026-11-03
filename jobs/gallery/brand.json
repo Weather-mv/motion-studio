@@ -1,0 +1,50 @@
+{
+  "name": "Gallery",
+  "logo": "logo.svg",
+  "colors": {
+    "bg": "#F4F6FB",
+    "panel": "#FFFFFF",
+    "text": "#111827",
+    "muted": "#4B5563",
+    "accent": "#2563EB",
+    "secondary": "#7C3AED",
+    "ok": "#15803D",
+    "warn": "#B45309",
+    "error": "#B91C1C"
+  },
+  "fonts": {
+    "heading": "Roboto",
+    "body": "Roboto"
+  },
+  "fontFiles": [
+    {
+      "family": "Roboto",
+      "file": "fonts/Roboto-Regular.ttf",
+      "weight": 400
+    },
+    {
+      "family": "Roboto",
+      "file": "fonts/Roboto-Bold.ttf",
+      "weight": 700
+    }
+  ],
+  "motion": {
+    "enterSec": 0.5,
+    "exitSec": 0.3,
+    "staggerSec": 0.12,
+    "transitionSec": 0.4,
+    "distance": 32,
+    "enterEase": [
+      0.16,
+      1,
+      0.3,
+      1
+    ],
+    "moveEase": [
+      0.65,
+      0,
+      0.35,
+      1
+    ]
+  }
+}

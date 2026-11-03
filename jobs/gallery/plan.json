@@ -1,0 +1,361 @@
+{
+  "meta": {
+    "title": "Scene gallery",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationSec": 56,
+    "gates": 2,
+    "captions": {
+      "maxWords": 3,
+      "position": "bottom"
+    }
+  },
+  "beats": [
+    {
+      "id": "title",
+      "start": 0,
+      "end": 3.5,
+      "scene": "title",
+      "props": {
+        "headline": "Sample headline",
+        "sub": "Sample supporting line"
+      },
+      "vo": ""
+    },
+    {
+      "id": "featureGrid",
+      "start": 3.5,
+      "end": 7,
+      "scene": "featureGrid",
+      "props": {
+        "title": "Sample heading",
+        "items": [
+          "First item",
+          "Second item",
+          "Third item",
+          "Fourth item"
+        ]
+      },
+      "vo": "",
+      "transition": {
+        "type": "fade",
+        "sec": 0.4
+      }
+    },
+    {
+      "id": "metric",
+      "start": 7,
+      "end": 10.5,
+      "scene": "metric",
+      "props": {
+        "value": 42,
+        "suffix": "%",
+        "label": "Sample metric"
+      },
+      "vo": "",
+      "transition": {
+        "type": "slide",
+        "sec": 0.4,
+        "direction": "from-right"
+      }
+    },
+    {
+      "id": "stepFlow",
+      "start": 10.5,
+      "end": 14,
+      "scene": "stepFlow",
+      "props": {
+        "title": "Sample steps",
+        "steps": [
+          {
+            "title": "First step",
+            "body": "One short line"
+          },
+          {
+            "title": "Second step",
+            "body": "One short line"
+          },
+          {
+            "title": "Third step",
+            "body": "One short line"
+          }
+        ],
+        "stepSec": 0.8
+      },
+      "vo": ""
+    },
+    {
+      "id": "alert",
+      "start": 14,
+      "end": 17.5,
+      "scene": "alert",
+      "props": {
+        "badge": "Sample",
+        "headline": "Sample alert",
+        "sub": "One short line",
+        "tone": "warn"
+      },
+      "vo": ""
+    },
+    {
+      "id": "threeStage",
+      "start": 17.5,
+      "end": 21,
+      "scene": "threeStage",
+      "props": {
+        "count": 6,
+        "highlightIndex": 2,
+        "headline": "Sample 3D stage"
+      },
+      "vo": "",
+      "transition": {
+        "type": "fade",
+        "sec": 0.4
+      }
+    },
+    {
+      "id": "cta",
+      "start": 21,
+      "end": 24.5,
+      "scene": "cta",
+      "props": {
+        "headline": "One sample promise",
+        "button": "Sample button",
+        "url": "example.com"
+      },
+      "vo": "",
+      "transition": {
+        "type": "slide",
+        "sec": 0.4,
+        "direction": "from-right"
+      }
+    },
+    {
+      "id": "deviceMockup",
+      "start": 24.5,
+      "end": 28,
+      "scene": "deviceMockup",
+      "props": {
+        "device": "laptop",
+        "headline": "Sample device",
+        "sub": "Blank illustrative screen",
+        "illustrative": true
+      },
+      "vo": ""
+    },
+    {
+      "id": "cursorDemo",
+      "start": 28,
+      "end": 31.5,
+      "scene": "cursorDemo",
+      "props": {
+        "headline": "Sample demo",
+        "sub": "Cursor, click and zoom",
+        "illustrative": true,
+        "path": [
+          {
+            "x": 30,
+            "y": 25,
+            "at": 0
+          },
+          {
+            "x": 62,
+            "y": 58,
+            "at": 1,
+            "click": true
+          }
+        ],
+        "callout": {
+          "at": 1.2,
+          "x": 45,
+          "y": 40,
+          "w": 35,
+          "h": 35,
+          "zoom": 1.8,
+          "label": "Sample callout"
+        }
+      },
+      "vo": ""
+    },
+    {
+      "id": "beforeAfter",
+      "start": 31.5,
+      "end": 35,
+      "scene": "beforeAfter",
+      "props": {
+        "before": {
+          "label": "Before",
+          "items": [
+            "Sample old state",
+            "Another old state"
+          ]
+        },
+        "after": {
+          "label": "After",
+          "items": [
+            "Sample new state",
+            "Another new state"
+          ]
+        },
+        "revealAt": 0.8
+      },
+      "vo": "",
+      "transition": {
+        "type": "fade",
+        "sec": 0.4
+      }
+    },
+    {
+      "id": "chart",
+      "start": 35,
+      "end": 38.5,
+      "scene": "chart",
+      "props": {
+        "type": "bar",
+        "title": "Sample chart: the insight goes here",
+        "source": "Sample data, for layout only",
+        "labels": [
+          "One",
+          "Two",
+          "Three",
+          "Four",
+          "Five"
+        ],
+        "series": [
+          {
+            "name": "Sample",
+            "values": [
+              12,
+              19,
+              15,
+              28,
+              22
+            ]
+          }
+        ],
+        "highlight": 3,
+        "buildSec": 1
+      },
+      "vo": "",
+      "transition": {
+        "type": "slide",
+        "sec": 0.4,
+        "direction": "from-right"
+      }
+    },
+    {
+      "id": "quote",
+      "start": 38.5,
+      "end": 42,
+      "scene": "quote",
+      "props": {
+        "text": "Sample quote text, used only to test this layout.",
+        "author": "Sample Author",
+        "role": "Sample role"
+      },
+      "vo": ""
+    },
+    {
+      "id": "timeline",
+      "start": 42,
+      "end": 45.5,
+      "scene": "timeline",
+      "props": {
+        "title": "Sample timeline",
+        "items": [
+          {
+            "label": "Phase 1",
+            "title": "First event"
+          },
+          {
+            "label": "Phase 2",
+            "title": "Second event"
+          },
+          {
+            "label": "Phase 3",
+            "title": "Third event"
+          },
+          {
+            "label": "Phase 4",
+            "title": "Fourth event"
+          }
+        ],
+        "itemSec": 0.5
+      },
+      "vo": ""
+    },
+    {
+      "id": "logoReveal",
+      "start": 45.5,
+      "end": 49,
+      "scene": "logoReveal",
+      "props": {
+        "tagline": "Sample tagline"
+      },
+      "vo": "",
+      "transition": {
+        "type": "fade",
+        "sec": 0.4
+      }
+    },
+    {
+      "id": "iconGrid",
+      "start": 49,
+      "end": 52.5,
+      "scene": "iconGrid",
+      "props": {
+        "title": "Sample icons",
+        "items": [
+          {
+            "icon": "shield",
+            "label": "First",
+            "body": "One short line"
+          },
+          {
+            "icon": "chart",
+            "label": "Second",
+            "body": "One short line"
+          },
+          {
+            "icon": "clock",
+            "label": "Third",
+            "body": "One short line"
+          },
+          {
+            "icon": "users",
+            "label": "Fourth",
+            "body": "One short line"
+          },
+          {
+            "icon": "bolt",
+            "label": "Fifth",
+            "body": "One short line"
+          },
+          {
+            "icon": "globe",
+            "label": "Sixth",
+            "body": "One short line"
+          }
+        ]
+      },
+      "vo": "",
+      "transition": {
+        "type": "slide",
+        "sec": 0.4,
+        "direction": "from-right"
+      }
+    },
+    {
+      "id": "captions-demo",
+      "start": 52.5,
+      "end": 56,
+      "scene": "title",
+      "props": {
+        "headline": "Captions overlay",
+        "sub": "One to three words, current word lit"
+      },
+      "vo": ""
+    }
+  ]
+}

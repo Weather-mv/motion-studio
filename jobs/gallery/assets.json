@@ -1,0 +1,24 @@
+{
+  "assets": [
+    {
+      "file": "logo.svg",
+      "source": "Drawn for this gallery in this repo",
+      "licence": "Internal test asset, not a real brand"
+    },
+    {
+      "file": "fonts/Roboto-Regular.ttf",
+      "source": "Copied from the Roboto.zip in jobs/veron",
+      "licence": "Apache-2.0 (fonts/LICENSE.txt)"
+    },
+    {
+      "file": "fonts/Roboto-Bold.ttf",
+      "source": "Copied from the Roboto.zip in jobs/veron",
+      "licence": "Apache-2.0 (fonts/LICENSE.txt)"
+    },
+    {
+      "file": "fonts/LICENSE.txt",
+      "source": "Copied from the Roboto.zip in jobs/veron",
+      "licence": "Apache-2.0 licence text"
+    }
+  ]
+}
