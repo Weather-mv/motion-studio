@@ -13,7 +13,8 @@
     "typecheck": "tsc --noEmit",
     "docs:scenes": "node tools/gen-scenes-doc.mjs",
     "audit": "node tools/audit.mjs",
-    "notes": "node tools/notes.mjs"
+    "notes": "node tools/notes.mjs",
+    "docs": "node tools/gen-scenes-doc.mjs && node tools/gen-types-doc.mjs"
   },
   "dependencies": {
     "@huggingface/transformers": "4.2.0",
