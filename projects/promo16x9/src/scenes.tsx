@@ -6,10 +6,18 @@ import {S1, S2, S3, S4, SCENE} from './timing';
 
 const DESK = {height: 56, width: 860, rise: 62, bottom: 930, stepRight: 22};
 
+// Generic person, drawn in code: the people hired to watch the robots.
+const PersonIcon: React.FC<{size: number}> = ({size}) => (
+  <svg width={size} height={size} viewBox="0 0 48 48" fill={withAlpha(COLOR.cobalt, 0.16)} stroke={COLOR.ink} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" style={{display: 'block', flexShrink: 0}}>
+    <circle cx="24" cy="15" r="9" />
+    <path d="M7 44c0-10 7.500-16 17-16s17 6 17 16z" />
+  </svg>
+);
+
 const Desk: React.FC = () => (
-  <div style={{...glass(0.42), width: '100%', height: '100%', borderRadius: 18, display: 'flex', alignItems: 'center', gap: 16, paddingLeft: 22, boxSizing: 'border-box'}}>
+  <div style={{...glass(0.42), width: '100%', height: '100%', borderRadius: 18, display: 'flex', alignItems: 'center', gap: 24, paddingLeft: 26, boxSizing: 'border-box'}}>
     {[0, 1, 2].map((i) => (
-      <div key={i} style={{width: 58, height: 30, borderRadius: 6, border: `3px solid ${COLOR.ink}`, boxSizing: 'border-box', background: withAlpha(COLOR.cobalt, 0.16)}} />
+      <PersonIcon key={i} size={42} />
     ))}
   </div>
 );
