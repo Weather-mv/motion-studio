@@ -1,10 +1,14 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {AbsoluteFill, Audio, Sequence, cancelRender, continueRender, delayRender, interpolate, staticFile, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, Audio, cancelRender, continueRender, delayRender, interpolate, staticFile, useCurrentFrame} from 'remotion';
+import {TransitionSeries, linearTiming} from '@remotion/transitions';
+import {fade} from '@remotion/transitions/fade';
+import {slide} from '@remotion/transitions/slide';
 import {registry} from './scenes/registry';
 import type {SceneName} from './scenes/schemas';
 import {CaptionsOverlay} from './core/CaptionsOverlay';
+import {motionTokens, toEasing} from './core/motion';
 import {ThemeProvider} from './core/theme';
-import type {Brand, Plan, Word} from './core/types';
+import type {Beat, Brand, Plan, Word} from './core/types';
 
 export type JobVideoProps = {jobId: string; plan: Plan; brand: Brand; words?: Word[]};
 
@@ -43,23 +47,42 @@ export const JobVideo: React.FC<JobVideoProps> = ({jobId, plan, brand, words}) =
       continueRender(fontHandle);
     }
   }, [fontsReady, fontHandle]);
+
+  const motion = motionTokens(brand);
+  const transitionFrames = (b?: Beat) => (b?.transition && b.transition.type !== 'cut' ? Math.round((b.transition.sec ?? motion.transitionSec) * fps) : 0);
+  // A beat always starts on its plan.json time, so the incoming beat begins on its word.
+  // The outgoing beat holds for the length of the transition instead, which leaves the total length unchanged.
+  const series = plan.beats.flatMap((b, i) => {
+    const Scene = registry[b.scene as SceneName];
+    if (!Scene) throw new Error(`Unknown scene "${b.scene}" in beat "${b.id}"`);
+    const next = plan.beats[i + 1];
+    const from = Math.round(b.start * fps);
+    const dur = Math.max(1, Math.round(b.end * fps) - from);
+    const overlap = transitionFrames(next);
+    const items = [
+      <TransitionSeries.Sequence key={b.id} offset={i === 0 ? from : 0} durationInFrames={dur + overlap}>
+        <BeatBlur blurIn={b.props.blurIn ?? 0} blurOut={b.props.blurOut ?? 0} dur={dur}>
+          <Scene props={b.props} jobId={jobId} beatStart={b.start} />
+        </BeatBlur>
+      </TransitionSeries.Sequence>,
+    ];
+    if (overlap > 0) {
+      items.push(
+        <TransitionSeries.Transition
+          key={`${b.id}-to-${next.id}`}
+          timing={linearTiming({durationInFrames: overlap, easing: toEasing(motion.moveEase)})}
+          presentation={(next.transition?.type === 'slide' ? slide({direction: next.transition.direction ?? 'from-right'}) : fade()) as any}
+        />,
+      );
+    }
+    return items;
+  });
+
   return (
     <ThemeProvider brand={brand} jobId={jobId}>
       <AbsoluteFill>
         {fontCss ? <style>{fontCss}</style> : null}
-        {plan.beats.map((b) => {
-          const Scene = registry[b.scene as SceneName];
-          if (!Scene) throw new Error(`Unknown scene "${b.scene}" in beat "${b.id}"`);
-          const from = Math.round(b.start * fps);
-          const dur = Math.max(1, Math.round((b.end - b.start) * fps));
-          return (
-            <Sequence key={b.id} from={from} durationInFrames={dur}>
-              <BeatBlur blurIn={b.props.blurIn ?? 0} blurOut={b.props.blurOut ?? 0} dur={dur}>
-                <Scene props={b.props} jobId={jobId} beatStart={b.start} />
-              </BeatBlur>
-            </Sequence>
-          );
-        })}
+        <TransitionSeries>{series}</TransitionSeries>
         {captions && words?.length && fontsReady ? <CaptionsOverlay words={words} config={captions} /> : null}
         {audio ? <Audio src={staticFile(`jobs/${jobId}/${audio}`)} /> : null}
       </AbsoluteFill>

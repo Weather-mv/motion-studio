@@ -14,5 +14,13 @@
   },
   "fonts": {"heading": "Arial, Helvetica, sans-serif", "body": "Arial, Helvetica, sans-serif"},
   "fontFiles": [],
-  "motion": {"enterSec": 0.5, "staggerSec": 0.12}
+  "motion": {
+    "enterSec": 0.5,
+    "exitSec": 0.3,
+    "staggerSec": 0.12,
+    "transitionSec": 0.4,
+    "distance": 32,
+    "enterEase": [0.16, 1, 0.3, 1],
+    "moveEase": [0.65, 0, 0.35, 1]
+  }
 }

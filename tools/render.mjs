@@ -1,9 +1,10 @@
 // npm run render -- <job>   Renders picture only, then muxes audio separately (never one filter graph).
-// npm run render -- <job> --still=<frame>   Writes one frame to jobs/<job>/qa/, passing only the beat at that frame.
+// npm run render -- <job> --still=<frame> [--ratio=16x9|9x16|1x1]   Writes one frame to jobs/<job>/qa/, passing only the beat at that frame (and the previous beat during a transition).
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync, execSync, spawnSync} from 'node:child_process';
+import {SIZES} from './lib/scaffold.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const id = process.argv[2];
 if (!id) { console.error('Usage: npm run render -- <job> [--still=<frame>]'); process.exit(1); }
@@ -19,14 +20,20 @@ if (stillArg) {
   if (!Number.isInteger(frame) || !beat) { console.error(`No beat at frame ${stillArg.split('=')[1]}.`); process.exit(1); }
   fs.mkdirSync(path.join(root, 'out'), {recursive: true});
   const propsFile = path.join('out', `${id}-still-props.json`);
-  fs.writeFileSync(path.join(root, propsFile), JSON.stringify({jobId: id, plan: {...plan, beats: [beat]}, brand}));
-  const png = path.join('jobs', id, 'qa', `still-${beat.id}-f${frame}.png`);
+  const i = plan.beats.indexOf(beat);
+  const overlapping = beat.transition && beat.transition.type !== 'cut' && i > 0;
+  const beats = overlapping ? [plan.beats[i - 1], beat] : [beat];
+  const ratio = process.argv.slice(3).find((a) => a.startsWith('--ratio='))?.split('=')[1];
+  if (ratio && !SIZES[ratio]) { console.error(`Unknown ratio "${ratio}".`); process.exit(1); }
+  const meta = ratio ? {...plan.meta, width: SIZES[ratio][0], height: SIZES[ratio][1]} : plan.meta;
+  fs.writeFileSync(path.join(root, propsFile), JSON.stringify({jobId: id, plan: {meta, beats}, brand}));
+  const png = path.join('jobs', id, 'qa', `still-${beat.id}-f${frame}${ratio ? `-${ratio}` : ''}.png`);
   remotion(['still', 'src/index.ts', id, png, `--frame=${frame}`, `--props=${propsFile}`]);
   console.log(`
 Still: ${png} (beat "${beat.id}", check-job skipped: preview only)`);
   process.exit(0);
 }
-try { execFileSync('node', [path.join(root, 'tools', 'check-job.mjs'), id], {stdio: 'inherit'}); }
+try { execFileSync('node', [path.join(root, 'tools', 'check-job.mjs'), id, '--static'], {stdio: 'inherit'}); }
 catch { console.error('\nRender stopped: fix blockers first.'); process.exit(1); }
 execFileSync('node', [path.join(root, 'tools', 'sync.mjs')], {stdio: 'inherit'});
 const plan = JSON.parse(fs.readFileSync(path.join(root, 'jobs', id, 'plan.json'), 'utf8'));
