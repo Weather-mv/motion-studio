@@ -1,6 +1,7 @@
 import React from 'react';
-import {AbsoluteFill, useVideoConfig} from 'remotion';
+import {AbsoluteFill} from 'remotion';
 import {Safe} from '../core/Safe';
+import {useStage} from '../core/stage';
 import {useTheme} from '../core/theme';
 import {useGsapTimeline} from '../core/useGsap';
 import type {SceneProps} from '../core/types';
@@ -8,7 +9,7 @@ import type {SceneProps} from '../core/types';
 // props: badge, headline, sub?, tone ('ok'|'warn'|'error')
 export const AlertCallout: React.FC<SceneProps> = ({props}) => {
   const {brand} = useTheme();
-  const {width} = useVideoConfig();
+  const width = useStage().unit * 1920;
   const tone = brand.colors[(props.tone ?? 'warn') as 'ok' | 'warn' | 'error'];
   const ref = useGsapTimeline((tl, root) => {
     tl.from(root.querySelector('.box'), {opacity: 0, scale: 0.85, duration: 0.45, ease: 'back.out(1.6)'}, 0.2);

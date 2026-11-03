@@ -1,6 +1,7 @@
 import React from 'react';
-import {AbsoluteFill, useVideoConfig} from 'remotion';
+import {AbsoluteFill} from 'remotion';
 import {Safe} from '../core/Safe';
+import {useStage} from '../core/stage';
 import {useTheme} from '../core/theme';
 import {useGsapTimeline} from '../core/useGsap';
 import type {SceneProps} from '../core/types';
@@ -8,7 +9,7 @@ import type {SceneProps} from '../core/types';
 // props: headline, sub?, align? ('left'|'center')
 export const TitleScene: React.FC<SceneProps> = ({props}) => {
   const {brand} = useTheme();
-  const {width} = useVideoConfig();
+  const width = useStage().unit * 1920;
   const center = props.align === 'center';
   const ref = useGsapTimeline((tl, root) => {
     tl.from(root.querySelectorAll('.w'), {opacity: 0, y: 40, duration: 0.5, ease: 'power3.out', stagger: brand.motion?.staggerSec ?? 0.12}, 0.2);

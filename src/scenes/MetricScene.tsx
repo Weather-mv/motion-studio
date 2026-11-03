@@ -1,6 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Safe} from '../core/Safe';
+import {useStage} from '../core/stage';
 import {useTheme} from '../core/theme';
 import type {SceneProps} from '../core/types';
 
@@ -8,7 +9,8 @@ import type {SceneProps} from '../core/types';
 export const MetricScene: React.FC<SceneProps> = ({props}) => {
   const {brand} = useTheme();
   const frame = useCurrentFrame();
-  const {fps, width} = useVideoConfig();
+  const {fps} = useVideoConfig();
+  const width = useStage().unit * 1920;
   const dur = (props.countSec ?? 1.6) * fps;
   const p = interpolate(frame, [0.3 * fps, 0.3 * fps + dur], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic)});
   const v = (props.value ?? 0) * p;

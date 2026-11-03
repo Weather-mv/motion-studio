@@ -1,6 +1,7 @@
 import React from 'react';
-import {AbsoluteFill, useVideoConfig} from 'remotion';
+import {AbsoluteFill} from 'remotion';
 import {Safe} from '../core/Safe';
+import {useStage} from '../core/stage';
 import {useTheme} from '../core/theme';
 import {useGsapTimeline} from '../core/useGsap';
 import type {SceneProps} from '../core/types';
@@ -8,7 +9,7 @@ import type {SceneProps} from '../core/types';
 // props: title?, items: string[] (2-6), cycleSec? (seconds each item stays highlighted)
 export const FeatureGrid: React.FC<SceneProps> = ({props}) => {
   const {brand} = useTheme();
-  const {width} = useVideoConfig();
+  const width = useStage().unit * 1920;
   const items: string[] = props.items ?? [];
   const cycle: number = props.cycleSec ?? 0.9;
   const ref = useGsapTimeline((tl, root) => {

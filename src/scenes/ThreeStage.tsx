@@ -2,6 +2,7 @@ import React from 'react';
 import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
 import {ThreeCanvas} from '@remotion/three';
 import {Safe} from '../core/Safe';
+import {useStage} from '../core/stage';
 import {useTheme} from '../core/theme';
 import {useGsapTimeline} from '../core/useGsap';
 import type {SceneProps} from '../core/types';
@@ -13,6 +14,8 @@ export const ThreeStage: React.FC<SceneProps> = ({props}) => {
   const frame = useCurrentFrame();
   const {width, height, fps} = useVideoConfig();
   const t = frame / fps;
+  const typeWidth = useStage().unit * 1920;
+  const cameraPull = width > height ? 1 : width === height ? 1.5 : 2.6;
   const count: number = props.count ?? 8;
   const hi: number | undefined = props.highlightIndex;
   const ref = useGsapTimeline((tl, root) => {
@@ -20,7 +23,7 @@ export const ThreeStage: React.FC<SceneProps> = ({props}) => {
   });
   return (
     <AbsoluteFill style={{background: brand.colors.bg}}>
-      <ThreeCanvas width={width} height={height} camera={{position: [0, 4, 11], fov: 50}}>
+      <ThreeCanvas width={width} height={height} camera={{position: [0, 4 * cameraPull, 11 * cameraPull], fov: 50}}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 10, 5]} intensity={1.2} />
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]}>
@@ -41,8 +44,8 @@ export const ThreeStage: React.FC<SceneProps> = ({props}) => {
       </ThreeCanvas>
       <Safe>
         <div ref={ref} style={{fontFamily: brand.fonts.heading}}>
-          {props.headline ? <div className="t" style={{fontSize: width * 0.05, fontWeight: 800, color: brand.colors.text}}>{props.headline}</div> : null}
-          {props.sub ? <div className="t" style={{fontSize: width * 0.026, color: brand.colors.accent, marginTop: 12}}>{props.sub}</div> : null}
+          {props.headline ? <div className="t" style={{fontSize: typeWidth * 0.05, fontWeight: 800, color: brand.colors.text}}>{props.headline}</div> : null}
+          {props.sub ? <div className="t" style={{fontSize: typeWidth * 0.026, color: brand.colors.accent, marginTop: 12}}>{props.sub}</div> : null}
         </div>
       </Safe>
     </AbsoluteFill>

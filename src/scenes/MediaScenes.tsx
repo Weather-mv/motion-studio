@@ -143,7 +143,10 @@ export const BeforeAfter: React.FC<SceneProps> = ({props}) => {
     );
   }
   const w = landscape ? (safe.width - gap) / 2 : safe.width;
-  const h = landscape ? Math.min(safe.height, 640 * unit) : (safe.height - gap) / 2;
+  const room = landscape ? safe.height : (safe.height - gap) / 2;
+  const rows = Math.max(p.before.items?.length ?? 0, p.after.items?.length ?? 0);
+  const fitted = (88 + 8 + 28) * unit + stage.type.h2 * 1.2 + rows * ((stage.type.h3 - 2 * unit) * 1.25 + 40 * unit);
+  const h = p.before.src || p.after.src ? room : Math.min(room, fitted);
   return (
     <SceneFrame style={{flexDirection: landscape ? 'row' : 'column', gap, alignItems: 'center', justifyContent: 'center'}}>
       <div style={{...m.enter(0), filter: `saturate(${1 - 0.5 * reveal})`}}><StatePanel side={p.before} kind="before" w={w} h={h} /></div>
