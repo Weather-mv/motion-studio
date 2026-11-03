@@ -1,0 +1,10 @@
+node_modules/
+.venv/
+out/
+__pycache__/
+*.pyc
+# Large client media stays out of git. Each job's assets.json records source and licence.
+jobs/veron/
+public/jobs/*
+!public/jobs/gallery/
+jobs/*/qa/*.png

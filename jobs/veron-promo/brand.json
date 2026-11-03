@@ -1,0 +1,51 @@
+{
+  "name": "V.E.R.O.N.",
+  "logo": "logo.png",
+  "colors": {
+    "bg": "#B4C0DE",
+    "panel": "#B5B2D6",
+    "text": "#0A0F2C",
+    "muted": "#3A4A63",
+    "accent": "#1F3BFF",
+    "secondary": "#3B1AA8",
+    "ok": "#1F3BFF",
+    "warn": "#FF8A1F",
+    "error": "#FF8A1F"
+  },
+  "fonts": {
+    "heading": "Roboto",
+    "body": "Roboto"
+  },
+  "fontFiles": [
+    {
+      "family": "Roboto",
+      "file": "fonts/Roboto-Regular.ttf",
+      "weight": 400
+    },
+    {
+      "family": "Roboto",
+      "file": "fonts/Roboto-Bold.ttf",
+      "weight": 700
+    }
+  ],
+  "motion": {
+    "enterSec": 0.5,
+    "staggerSec": 0.12
+  },
+  "background": "bg-soft-lavender-wave-gradient.png",
+  "glass": {
+    "tint": "#FFFFFF",
+    "opacity": 0.55
+  },
+  "night": {
+    "sky": "#0A0F2C",
+    "skyLow": "#1B2452",
+    "ground": "#10163A",
+    "building": "#161D45",
+    "window": "#B4C0DE",
+    "fence": "#3A4A63",
+    "light": "#B4C0DE",
+    "text": "#FFFFFF",
+    "highlight": "#A8D0FF"
+  }
+}

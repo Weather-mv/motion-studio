@@ -1,0 +1,292 @@
+[
+  {
+    "word": "Ten",
+    "start": 0.0,
+    "end": 0.34
+  },
+  {
+    "word": "robots?",
+    "start": 0.34,
+    "end": 0.86
+  },
+  {
+    "word": "One",
+    "start": 1.4,
+    "end": 1.76
+  },
+  {
+    "word": "site?",
+    "start": 1.76,
+    "end": 2.16
+  },
+  {
+    "word": "Are",
+    "start": 2.9,
+    "end": 3.08
+  },
+  {
+    "word": "they",
+    "start": 3.08,
+    "end": 3.26
+  },
+  {
+    "word": "all",
+    "start": 3.26,
+    "end": 3.38
+  },
+  {
+    "word": "running",
+    "start": 3.38,
+    "end": 3.7
+  },
+  {
+    "word": "as",
+    "start": 3.7,
+    "end": 3.92
+  },
+  {
+    "word": "they",
+    "start": 3.92,
+    "end": 4.08
+  },
+  {
+    "word": "should?",
+    "start": 4.08,
+    "end": 4.4
+  },
+  {
+    "word": "Veron",
+    "start": 5.1,
+    "end": 5.54
+  },
+  {
+    "word": "tracks",
+    "start": 5.54,
+    "end": 6.0
+  },
+  {
+    "word": "every",
+    "start": 6.0,
+    "end": 6.5
+  },
+  {
+    "word": "robot",
+    "start": 6.5,
+    "end": 6.84
+  },
+  {
+    "word": "on",
+    "start": 6.84,
+    "end": 7.16
+  },
+  {
+    "word": "your",
+    "start": 7.16,
+    "end": 7.28
+  },
+  {
+    "word": "site.",
+    "start": 7.28,
+    "end": 7.6
+  },
+  {
+    "word": "Who",
+    "start": 8.06,
+    "end": 8.24
+  },
+  {
+    "word": "it",
+    "start": 8.24,
+    "end": 8.36
+  },
+  {
+    "word": "is,",
+    "start": 8.36,
+    "end": 8.58
+  },
+  {
+    "word": "where",
+    "start": 8.9,
+    "end": 9.1
+  },
+  {
+    "word": "it",
+    "start": 9.1,
+    "end": 9.26
+  },
+  {
+    "word": "is,",
+    "start": 9.26,
+    "end": 9.5
+  },
+  {
+    "word": "what",
+    "start": 9.8,
+    "end": 9.94
+  },
+  {
+    "word": "it's",
+    "start": 9.94,
+    "end": 10.14
+  },
+  {
+    "word": "doing,",
+    "start": 10.14,
+    "end": 10.36
+  },
+  {
+    "word": "and",
+    "start": 10.74,
+    "end": 11.0
+  },
+  {
+    "word": "how",
+    "start": 11.0,
+    "end": 11.26
+  },
+  {
+    "word": "it's",
+    "start": 11.26,
+    "end": 11.42
+  },
+  {
+    "word": "performing.",
+    "start": 11.42,
+    "end": 11.8
+  },
+  {
+    "word": "If",
+    "start": 12.46,
+    "end": 12.56
+  },
+  {
+    "word": "something",
+    "start": 12.56,
+    "end": 12.82
+  },
+  {
+    "word": "looks",
+    "start": 12.82,
+    "end": 13.04
+  },
+  {
+    "word": "off,",
+    "start": 13.04,
+    "end": 13.42
+  },
+  {
+    "word": "you're",
+    "start": 13.74,
+    "end": 13.9
+  },
+  {
+    "word": "alerted",
+    "start": 13.9,
+    "end": 14.3
+  },
+  {
+    "word": "right",
+    "start": 14.3,
+    "end": 14.52
+  },
+  {
+    "word": "away,",
+    "start": 14.52,
+    "end": 14.9
+  },
+  {
+    "word": "so",
+    "start": 15.18,
+    "end": 15.42
+  },
+  {
+    "word": "you're",
+    "start": 15.42,
+    "end": 15.58
+  },
+  {
+    "word": "never",
+    "start": 15.58,
+    "end": 15.86
+  },
+  {
+    "word": "monitoring",
+    "start": 15.86,
+    "end": 16.42
+  },
+  {
+    "word": "alone.",
+    "start": 16.42,
+    "end": 16.76
+  },
+  {
+    "word": "Every",
+    "start": 17.48,
+    "end": 17.74
+  },
+  {
+    "word": "robot,",
+    "start": 17.74,
+    "end": 18.14
+  },
+  {
+    "word": "every",
+    "start": 18.48,
+    "end": 18.8
+  },
+  {
+    "word": "route,",
+    "start": 18.8,
+    "end": 19.16
+  },
+  {
+    "word": "verified.",
+    "start": 19.46,
+    "end": 19.88
+  },
+  {
+    "word": "Veron,",
+    "start": 20.64,
+    "end": 21.2
+  },
+  {
+    "word": "scale",
+    "start": 21.52,
+    "end": 21.98
+  },
+  {
+    "word": "your",
+    "start": 21.98,
+    "end": 22.16
+  },
+  {
+    "word": "robotics",
+    "start": 22.16,
+    "end": 22.62
+  },
+  {
+    "word": "fleet,",
+    "start": 22.62,
+    "end": 22.98
+  },
+  {
+    "word": "not",
+    "start": 23.3,
+    "end": 23.5
+  },
+  {
+    "word": "your",
+    "start": 23.5,
+    "end": 23.66
+  },
+  {
+    "word": "compliance",
+    "start": 23.66,
+    "end": 24.16
+  },
+  {
+    "word": "overhead.",
+    "start": 24.16,
+    "end": 24.56
+  }
+]

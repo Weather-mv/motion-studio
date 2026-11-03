@@ -1,0 +1,7 @@
+{
+  "meta": {"title": "Untitled", "width": 1920, "height": 1080, "fps": 30, "durationSec": 15},
+  "beats": [
+    {"id": "hook", "start": 0, "end": 5, "scene": "title", "props": {"headline": "Your hook here", "sub": "Supporting line"}, "vo": ""},
+    {"id": "cta", "start": 5, "end": 15, "scene": "cta", "props": {"headline": "One clear promise", "button": "Book a demo", "url": "example.com"}, "vo": ""}
+  ]
+}

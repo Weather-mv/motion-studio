@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "title": "V.E.R.O.N. promo",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationSec": 24.933333333333334,
+    "audio": "voiceover.mp3"
+  },
+  "beats": [
+    {
+      "id": "night-site",
+      "start": 0.0,
+      "end": 5.1,
+      "scene": "nightSite",
+      "props": {
+        "robots": 10,
+        "tag": [
+          {
+            "text": "10 Robots.",
+            "at": 0.0
+          },
+          {
+            "text": "1 Site.",
+            "at": 1.4
+          }
+        ],
+        "question": {
+          "lines": [
+            "Are they all running",
+            "as they should?"
+          ],
+          "at": 2.9,
+          "highlightAt": 3.7
+        },
+        "blurOut": 9
+      },
+      "vo": "Ten robots. One site. Are they all running as they should?",
+      "sfx": []
+    },
+    {
+      "id": "dashboard",
+      "start": 5.1,
+      "end": 12.466666666666667,
+      "scene": "robotDashboard",
+      "props": {
+        "logoPx": 140,
+        "statuses": [
+          "Active",
+          "Patrolling",
+          "Idle",
+          "Patrolling",
+          "Active",
+          "Patrolling",
+          "Active",
+          "Idle",
+          "Patrolling",
+          "Active"
+        ],
+        "cardsIn": {
+          "from": 5.1,
+          "to": 7.266666666666667
+        },
+        "captions": [
+          {
+            "text": "Who it is",
+            "at": 8.066666666666666,
+            "field": "identity"
+          },
+          {
+            "text": "Where it is",
+            "at": 8.9,
+            "field": "location"
+          },
+          {
+            "text": "What it's doing",
+            "at": 9.8,
+            "field": "status"
+          },
+          {
+            "text": "How it's performing",
+            "at": 11.0,
+            "field": "performance"
+          }
+        ],
+        "blurIn": 6
+      },
+      "vo": "Veron tracks every robot on your site. Who it is, where it is, what it's doing, and how it's performing.",
+      "sfx": []
+    },
+    {
+      "id": "alert",
+      "start": 12.466666666666667,
+      "end": 17.466666666666665,
+      "scene": "anomalyAlert",
+      "props": {
+        "logoPx": 140,
+        "statuses": [
+          "Active",
+          "Patrolling",
+          "Idle",
+          "Patrolling",
+          "Active",
+          "Patrolling",
+          "Active",
+          "Idle",
+          "Patrolling",
+          "Active"
+        ],
+        "alertCard": 6,
+        "cardAlertAt": 12.566666666666666,
+        "alertPanelAt": 13.9,
+        "avatarAt": 15.566666666666666,
+        "captions": [
+          {
+            "lines": [
+              "Something",
+              "looks off"
+            ],
+            "at": 12.566666666666666,
+            "icon": true
+          },
+          {
+            "lines": [
+              "Never monitoring",
+              "alone"
+            ],
+            "at": 15.566666666666666
+          }
+        ]
+      },
+      "vo": "If something looks off, you're alerted right away, so you're never monitoring alone.",
+      "sfx": []
+    },
+    {
+      "id": "route-map",
+      "start": 17.466666666666665,
+      "end": 20.633333333333333,
+      "scene": "routeMap",
+      "props": {
+        "logoPx": 140,
+        "robots": 10,
+        "captions": [
+          {
+            "text": "Every Robot.",
+            "at": 17.466666666666665
+          },
+          {
+            "text": "Every Route.",
+            "at": 18.466666666666665
+          },
+          {
+            "text": "Verified.",
+            "at": 19.466666666666665
+          }
+        ],
+        "blurOut": 6
+      },
+      "vo": "Every robot, every route, verified.",
+      "sfx": []
+    },
+    {
+      "id": "end-card",
+      "start": 20.633333333333333,
+      "end": 24.933333333333334,
+      "scene": "logoEndCard",
+      "props": {
+        "logoAt": 20.633333333333333,
+        "lines": [
+          {
+            "text": "Scale your robotics fleet,",
+            "at": 21.533333333333335
+          },
+          {
+            "text": "not your compliance overhead.",
+            "at": 23.3
+          }
+        ],
+        "button": {
+          "text": "Request a Demo",
+          "at": 22.633333333333333
+        },
+        "url": {
+          "text": "proctortrack.com/veron",
+          "at": 23.3
+        },
+        "blurIn": 6
+      },
+      "vo": "Veron, scale your robotics fleet, not your compliance overhead.",
+      "sfx": []
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+Job: $ARGUMENTS
+Check the built video before showing me anything: text inside the 5% safe margins at peak zoom, no clipped or overflowing text, frames either side of every cut, hook visible in the first second, no static shot over about 3 s, captions/on-screen words land on their spoken words (words.json), loudness -14 LUFS and true peak at or below -1.5 dBTP when audio exists, no unconfirmed claims from brief.md. Score out of 10, fix anything under 9.5, and write jobs/$ARGUMENTS/qa/VERIFY.md with the numbers. Say plainly which checks you could not run.

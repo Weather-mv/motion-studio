@@ -1,0 +1,10 @@
+{
+  "meta": {"title": "Example promo", "width": 1920, "height": 1080, "fps": 30, "durationSec": 15},
+  "beats": [
+    {"id": "hook", "start": 0, "end": 3, "scene": "title", "props": {"headline": "Too many tools. One workflow.", "sub": "Sample brand, sample promo"}, "vo": ""},
+    {"id": "problem", "start": 3, "end": 6, "scene": "threeStage", "props": {"count": 8, "highlightIndex": 5, "headline": "8 systems. 1 team.", "sub": "Which one is slowing you down?"}, "vo": ""},
+    {"id": "solution", "start": 6, "end": 10, "scene": "featureGrid", "props": {"title": "One place for everything", "items": ["Track", "Alert", "Report", "Verify"]}, "vo": ""},
+    {"id": "proof", "start": 10, "end": 12.5, "scene": "metric", "props": {"value": 62, "suffix": "%", "label": "less manual work (sample number)"}, "vo": ""},
+    {"id": "cta", "start": 12.5, "end": 15, "scene": "cta", "props": {"headline": "Do more with the team you have", "button": "Book a demo", "url": "example.com"}, "vo": ""}
+  ]
+}
