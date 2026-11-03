@@ -52,17 +52,19 @@ export const Fleet: React.FC<{at: number; stagger: number; count: number; opacit
 
 // Two-tone headline: ink, then cobalt. Line breaks are written by hand, as the guideline asks.
 // It arrives at `from` and fades out before `to`. With `hold`, it stays on to the end of the film.
-export const Headline: React.FC<{from: number; to: number; ink: string; cobalt: string; hold?: boolean}> = ({from, to, ink, cobalt, hold}) => {
+// `cobaltAt` lets the second line land later, on its own spoken word.
+export const Headline: React.FC<{from: number; to: number; ink: string; cobalt: string; hold?: boolean; cobaltAt?: number}> = ({from, to, ink, cobalt, hold, cobaltAt}) => {
   const frame = useCurrentFrame();
   const arrive = useArrive();
   if (frame < from || frame >= to) return null;
   const p = arrive(from);
+  const q = arrive(cobaltAt ?? from);
   const out = hold ? 1 : interpolate(frame, [to - HEADLINE_EXIT, to], [1, 0], clamp);
   const {x, y, width} = LAYOUT.headline;
   return (
-    <div style={{...TYPE.headline, position: 'absolute', left: x, top: y, width, whiteSpace: 'nowrap', opacity: p * out, transform: `translateY(${(1 - p) * 24}px)`}}>
-      <div style={{color: COLOR.ink}}>{ink}</div>
-      <div style={{color: COLOR.cobalt}}>{cobalt}</div>
+    <div style={{...TYPE.headline, position: 'absolute', left: x, top: y, width, whiteSpace: 'nowrap', opacity: out}}>
+      <div style={{color: COLOR.ink, opacity: p, transform: `translateY(${(1 - p) * 24}px)`}}>{ink}</div>
+      <div style={{color: COLOR.cobalt, opacity: q, transform: `translateY(${(1 - q) * 24}px)`}}>{cobalt}</div>
     </div>
   );
 };

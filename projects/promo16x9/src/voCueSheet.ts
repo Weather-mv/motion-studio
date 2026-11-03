@@ -1,6 +1,6 @@
 // Voiceover word cues, from "jobs/compliance and audit - veron video/Hale v1.mp3" (19.88 s, 50 words).
 // Words and times come from a Whisper transcript and have not been checked by ear.
-// The brief expected 51 words over 25 s, in public/audio/veron_vo_25s.wav. If a different take arrives, regenerate this.
+// This recording is the film's voiceover, and timing.ts is built on these frames. A new take means retiming both.
 import {TOTAL_FRAMES} from './timing';
 
 // [word, frame where the word starts in the audio, at 30 fps]

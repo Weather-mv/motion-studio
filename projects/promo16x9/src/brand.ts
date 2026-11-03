@@ -17,8 +17,7 @@ export const ASSET = {
   frosted: 'Ethereal Frosted Glass Panels.png',
   regular: 'Roboto/Roboto-Regular.ttf',
   bold: 'Roboto/Roboto-Bold.ttf',
-  voiceover: 'audio/veron_vo_25s.wav',
-  music: 'audio/music_bed.mp3',
+  voiceover: 'audio/veron_vo.wav', // Hale v1.mp3, normalised to -14 LUFS; see README
 };
 
 export const FONT = 'Roboto';

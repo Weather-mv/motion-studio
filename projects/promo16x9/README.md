@@ -15,27 +15,18 @@ npx remotion studio
 npx remotion render Promo16x9 out/VERON_Master_16x9.mp4
 ```
 
-This command does not normalise loudness. Measure the result before delivery (target -14 LUFS, at or below -1.5 dBTP):
+## Audio
 
-```
-ffmpeg -i out/VERON_Master_16x9.mp4 -af ebur128=peak=true -f null -
-```
+Voice only, no music. `public/audio/veron_vo.wav` is `Hale v1.mp3` normalised to -14 LUFS, with peaks limited. The render command needs no extra step for loudness.
 
-## Add the audio
-
-Put these two files in `public/audio/`. Each plays as soon as its file exists, and the film stays silent until then.
-
-- `veron_vo_25s.wav`: voiceover
-- `music_bed.mp3`: music. Its level is set by `MUSIC_VOLUME` in `src/Promo.tsx`, currently a placeholder.
-
-`src/voCueSheet.ts` currently holds words and times from `Hale v1.mp3` (19.88 s), which is not yet wired into the film because it does not fit the 25-second scene timing.
+All scene timing in `src/timing.ts` follows the words in this recording. A new take means retiming.
 
 ## Files
 
 | File | What it holds |
 |---|---|
 | `src/timing.ts` | Every frame boundary, with comments |
-| `src/voCueSheet.ts` | Each voiceover word with its spoken frame and an evenly spaced frame |
+| `src/voCueSheet.ts` | Each voiceover word with its spoken frame, and an evenly spaced frame |
 | `src/brand.ts` | Colours, type, locked layout, asset names |
 | `src/parts.tsx` | Robots, headline, oversight layer, check mark |
 | `src/scenes.tsx` | The four scenes, the logo and the final fade |

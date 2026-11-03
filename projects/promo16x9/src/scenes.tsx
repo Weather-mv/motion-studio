@@ -49,7 +49,7 @@ export const Scene1: React.FC = () => {
   return (
     <>
       {frame < S2.robotsOutTo ? <Fleet at={S1.robotStart} stagger={S1.robotStagger} count={S1.robotCount} opacity={out} /> : null}
-      <Headline from={S1.headlineAt} to={SCENE.multiplication.to} ink="More robots." cobalt="More overhead." />
+      <Headline from={S1.headlineInkAt} cobaltAt={S1.headlineCobaltAt} to={SCENE.multiplication.to} ink="More robots." cobalt="More overhead." />
     </>
   );
 };
@@ -97,7 +97,7 @@ export const Scene3: React.FC = () => {
   const robot = 96;
   return (
     <>
-      <Headline from={S3.headlineAt} to={to} ink="Audit-ready" cobalt="by default." />
+      <Headline from={S3.headlineInkAt} cobaltAt={S3.headlineCobaltAt} to={to} ink="Audit-ready" cobalt="by default." />
       <div style={{position: 'absolute', inset: 0, opacity: out}}>
         <svg width={1920} height={1080} style={{position: 'absolute', inset: 0}}>
           <line x1={LINE.x1} x2={LINE.x2} y1={LINE.y} y2={LINE.y} stroke={COLOR.cobalt} strokeWidth={6} strokeLinecap="round" strokeDasharray={length} strokeDashoffset={length * (1 - draw)} />
@@ -157,7 +157,7 @@ export const Scene4: React.FC = () => {
     <>
       <Fleet at={S4.fleetAt} stagger={0} count={S1.robotCount} />
       <OversightLayer opacity={layer} />
-      <Headline from={S4.headlineAt} to={to} ink="Scale the fleet." cobalt="Not the overhead." hold />
+      <Headline from={S4.headlineInkAt} cobaltAt={S4.headlineCobaltAt} to={to} ink="Scale the fleet." cobalt="Not the overhead." hold />
       {/* Footer position from the locked layout: bottom-left, centred on y 960. 80 px tall, as the guideline's CTA pill. */}
       <div style={{...glass(0.6), ...TYPE.footer, position: 'absolute', left: LAYOUT.margin, top: LAYOUT.footerY - 40, height: 80, padding: '0 44px', borderRadius: 40, display: 'flex', alignItems: 'center', opacity: frame >= S4.ctaAt ? 1 : 0, transform: `scale(${cta})`, transformOrigin: 'left center', whiteSpace: 'nowrap'}}>
         Book a Demo
