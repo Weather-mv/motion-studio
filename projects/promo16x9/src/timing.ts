@@ -3,7 +3,7 @@
 export const FPS = 30;
 export const WIDTH = 1920;
 export const HEIGHT = 1080;
-export const TOTAL_FRAMES = 750; // 25 s. The voice ends near frame 596; the rest is the end card.
+export const TOTAL_FRAMES = 650; // 21.67 s. The voice ends near frame 596; the rest is the end card.
 
 export const SCENE = {
   multiplication: {from: 0, to: 164}, // "You added more robots..." to just before "Veron"
@@ -52,8 +52,8 @@ export const S3 = {
   rowStagger: 20, // one more row every 20 frames (6 rows: last starts at frame 452, "already")
   rowCount: 6,
   rowFillFrames: 18, // last row finished at frame 470
-  headlineInkAt: 404, // "audit": "Audit-ready"
-  headlineCobaltAt: 430, // "your" (records): "by default."
+  headlineInkAt: 297, // "Every": "Audit-ready" opens the scene, so the text column is not empty
+  headlineCobaltAt: 404, // "audit": "by default."
   sceneOutFrom: 474, // timeline, robots and card clear before scene 4
   sceneOutTo: 484,
 };
@@ -71,7 +71,7 @@ export const S4 = {
   ctaAt: 557, // "Book": CTA pill scales in with a spring
   ctaSettleFrames: 19, // the spring reaches exactly 1 one frame after this, at frame 577
   holdFrom: 577, // nothing moves from here...
-  holdTo: TOTAL_FRAMES - 10, // ...to here: 163 static frames
+  holdTo: TOTAL_FRAMES - 10, // ...to here: 63 static frames
   fadeFrom: TOTAL_FRAMES - 10, // fade to periwinkle over the last 10 frames
   fadeTo: TOTAL_FRAMES,
 };

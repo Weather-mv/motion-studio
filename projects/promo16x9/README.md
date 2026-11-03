@@ -1,6 +1,6 @@
 # V.E.R.O.N. promo, 16:9
 
-A 25-second motion-graphics promo: 1920x1080, 30 fps, 750 frames, one composition (`Promo16x9`). Built with Remotion and TypeScript, using `spring()` and `interpolate()` only.
+A 21.7-second motion-graphics promo: 1920x1080, 30 fps, 650 frames, one composition (`Promo16x9`). Built with Remotion and TypeScript, using `spring()` and `interpolate()` only.
 
 ## Run it
 

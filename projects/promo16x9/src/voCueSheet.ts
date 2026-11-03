@@ -61,7 +61,7 @@ export type VoCue = {
   index: number;
   word: string;
   spokenFrame: number; // where the word is actually spoken in this recording
-  evenFrame: number; // the approximate frame the brief asked for: words spaced evenly across all 750 frames
+  evenFrame: number; // the approximate frame the brief asked for: words spaced evenly across the whole film
 };
 
 export const voCueSheet: VoCue[] = WORDS.map(([word, spokenFrame], index) => ({
