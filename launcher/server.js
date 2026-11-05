@@ -61,6 +61,7 @@ function startServer() {
   const HOOKS_FILE = path.join(RUNTIME, 'hooks.json');
   const REPLAY_LIMIT = 512 * 1024; // terminal output kept so a reloaded page can catch up
   const PASTE_TO_ENTER_MS = 400; // the Claude Code input box needs a moment to take in a paste
+  const AUTO_START_FALLBACK_MS = 1500; // start Claude anyway if a page never reports its terminal size
   const TOKEN = crypto.randomBytes(24).toString('hex'); // only Claude Code processes we start can report hook events
   const ALLOWED_ORIGINS = new Set([`http://localhost:${PORT}`, `http://127.0.0.1:${PORT}`]);
 
@@ -88,6 +89,8 @@ function startServer() {
   const sockets = new Set();
   let armed = false; // a Generate click is waiting for Claude to finish changing files
   let baseline = null; // repo fingerprint from just before that click
+  let autoStarted = false; // Claude starts once, when the first page has reported its terminal size
+  let redrawPending = false; // a page just connected and needs a clean picture of the Claude screen
 
   function broadcast(message) {
     const text = JSON.stringify(message);
@@ -127,6 +130,12 @@ function startServer() {
     // Set when the server was started from inside another Claude Code session; they would confuse the child.
     for (const key of ['CLAUDECODE', 'CLAUDE_CODE_ENTRYPOINT', 'CLAUDE_CODE_SSE_PORT', 'CLAUDE_CODE_CHILD_SESSION']) delete env[key];
     return env;
+  }
+
+  function autoStartClaude() {
+    if (autoStarted) return;
+    autoStarted = true;
+    startClaude();
   }
 
   function startClaude() {
@@ -342,12 +351,28 @@ function startServer() {
       if (!t || !Number.isInteger(cols) || !Number.isInteger(rows) || cols < 2 || rows < 2) return;
       t.cols = cols;
       t.rows = rows;
-      if (t.proc) {
-        try {
-          t.proc.resize(cols, rows);
-        } catch {
-          // The process exited a moment ago.
+      if (term === 'claude' && !autoStarted) {
+        autoStartClaude();
+        return;
+      }
+      const proc = t.proc;
+      if (!proc) return;
+      try {
+        proc.resize(cols, rows);
+        if (term === 'claude' && redrawPending) {
+          // Replayed output can be scrambled if it was drawn at another size. A brief resize makes Claude Code redraw.
+          redrawPending = false;
+          proc.resize(Math.max(cols - 1, 2), rows);
+          setTimeout(() => {
+            try {
+              if (terms.claude.proc === proc) proc.resize(terms.claude.cols, terms.claude.rows);
+            } catch {
+              // The process exited a moment ago.
+            }
+          }, 150);
         }
+      } catch {
+        // The process exited a moment ago.
       }
     },
     config({folder, composition, auto}) {
@@ -404,7 +429,8 @@ function startServer() {
       socket.send(JSON.stringify({type: 'clear', term}));
       if (terms[term].replay) socket.send(JSON.stringify({type: 'output', term, data: terms[term].replay}));
     }
-    if (!terms.claude.proc && state.claude === 'stopped' && state.notice === 'Starting up.') startClaude();
+    redrawPending = Boolean(terms.claude.proc);
+    setTimeout(autoStartClaude, AUTO_START_FALLBACK_MS); // normally the page's first resize message starts Claude
   });
 
   server.on('error', (err) => {
