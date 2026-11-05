@@ -11,3 +11,5 @@ jobs/*/qa/*.png
 # Client media in standalone projects
 projects/*/public/
 jobs/compliance and audit - veron video/
+# Launcher logs, hook settings and saved form values
+launcher/.runtime/
