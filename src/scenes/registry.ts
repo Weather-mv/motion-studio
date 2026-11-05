@@ -9,6 +9,7 @@ import {ThreeStage} from './ThreeStage';
 import {CtaScene} from './CtaScene';
 import {RobotDashboard, AnomalyAlert} from './FleetDashboard';
 import {NightSite, RouteMap, LogoEndCard} from './VeronScenes';
+import {FleetOverhead, OversightConsolidation, AuditTrail, ScaleFinale} from './AuditScenes';
 import {BeforeAfter, CursorDemo, DeviceMockup} from './MediaScenes';
 import {Chart} from './Chart';
 import {IconGrid, LogoReveal, Quote, StepFlow, Timeline} from './ContentScenes';
@@ -36,4 +37,8 @@ export const registry: Record<SceneName, React.FC<SceneProps>> = {
   nightSite: NightSite,
   routeMap: RouteMap,
   logoEndCard: LogoEndCard,
+  fleetOverhead: FleetOverhead,
+  oversightConsolidation: OversightConsolidation,
+  auditTrail: AuditTrail,
+  scaleFinale: ScaleFinale,
 };

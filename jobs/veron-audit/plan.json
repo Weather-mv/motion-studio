@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "title": "veron-audit",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationSec": 20,
+    "gates": 2,
+    "type": "saas-promo",
+    "audio": "voiceover.mp3"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "start": 0,
+      "end": 5.233333333333333,
+      "scene": "fleetOverhead",
+      "props": {
+        "heading": [
+          {"text": "More robots.", "at": 0.4},
+          {"text": "More overhead.", "at": 2.4}
+        ],
+        "robots": {"from": 0.0, "to": 1.3, "count": 6},
+        "desks": {"from": 2.1, "to": 4.96, "count": 5, "glowAt": 4.3}
+      },
+      "vo": "You added more robots. Now you're hiring more people just to watch them."
+    },
+    {
+      "id": "oversight",
+      "start": 5.233333333333333,
+      "end": 9.7,
+      "scene": "oversightConsolidation",
+      "props": {
+        "heading": {"text": "Qualified engineering oversight.", "at": 7.9},
+        "fleet": {"from": 5.4, "to": 9.5, "count": 7},
+        "consolidate": {"collapseFrom": 5.6, "collapseTo": 6.8, "panelInAt": 6.6, "logoAt": 7.2}
+      },
+      "vo": "V.E.R.O.N. takes over the oversight workflow, with qualified engineers behind it."
+    },
+    {
+      "id": "audit",
+      "start": 9.7,
+      "end": 15.933333333333334,
+      "scene": "auditTrail",
+      "props": {
+        "heading": {"text": "Audit-ready by default.", "at": 13.1},
+        "timeline": {"buildFrom": 9.9, "buildTo": 15.76, "checks": [{"at": 11.0}, {"at": 12.7}]},
+        "checklist": {
+          "items": [
+            {"label": "Robot identified", "at": 11.0},
+            {"label": "Action recorded", "at": 12.7},
+            {"label": "Records ready", "at": 15.76}
+          ]
+        }
+      },
+      "vo": "Every robot identified. Every action recorded. So when the audit comes, your records are already there."
+    },
+    {
+      "id": "cta",
+      "start": 15.933333333333334,
+      "end": 20,
+      "scene": "scaleFinale",
+      "props": {
+        "heading": [
+          {"text": "Scale the fleet.", "at": 16.14},
+          {"text": "Not the overhead.", "at": 17.36}
+        ],
+        "fleet": {"from": 16.0, "to": 17.9, "count": 9},
+        "swapAt": 18.1,
+        "logo": {"at": 18.3},
+        "button": {"text": "Book a Demo", "at": 18.6},
+        "url": {"text": "proctortrack.com/veron", "at": 19.0}
+      },
+      "vo": "Scale your fleet, not your overhead. Book a V.E.R.O.N. demo."
+    }
+  ]
+}

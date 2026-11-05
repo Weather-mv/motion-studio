@@ -151,11 +151,18 @@ export const sceneSchemas = {
   nightSite: scene({}),
   routeMap: scene({}),
   logoEndCard: scene({}),
+  fleetOverhead: scene({}),
+  oversightConsolidation: scene({}),
+  auditTrail: scene({}),
+  scaleFinale: scene({}),
 };
 
 export type SceneName = keyof typeof sceneSchemas;
 export const SCENE_NAMES = Object.keys(sceneSchemas) as SceneName[];
-export const CLIENT_SCENES: SceneName[] = ['robotDashboard', 'anomalyAlert', 'nightSite', 'routeMap', 'logoEndCard'];
+export const CLIENT_SCENES: SceneName[] = [
+  'robotDashboard', 'anomalyAlert', 'nightSite', 'routeMap', 'logoEndCard',
+  'fleetOverhead', 'oversightConsolidation', 'auditTrail', 'scaleFinale',
+];
 export const NEW_SCENE_SUMMARIES: Partial<Record<SceneName, string>> = {
   title: 'Headline and supporting line. Use for hooks and section openers.',
   featureGrid: 'Short items in a grid, highlighted one after another.',

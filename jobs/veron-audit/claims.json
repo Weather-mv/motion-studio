@@ -1,0 +1,22 @@
+{
+  "claims": [
+    {
+      "text": "V.E.R.O.N. takes over the oversight workflow, with qualified engineers behind it",
+      "beat": "oversight",
+      "source": "script.md / voiceover.mp3",
+      "status": "unconfirmed"
+    },
+    {
+      "text": "Every robot identified. Every action recorded.",
+      "beat": "audit",
+      "source": "script.md / voiceover.mp3",
+      "status": "unconfirmed"
+    },
+    {
+      "text": "When the audit comes, your records are already there",
+      "beat": "audit",
+      "source": "script.md / voiceover.mp3",
+      "status": "unconfirmed"
+    }
+  ]
+}

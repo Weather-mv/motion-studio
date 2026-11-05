@@ -7,12 +7,15 @@ import brand1 from '../jobs/gallery/brand.json';
 import words1 from '../jobs/gallery/edit/words.json';
 import plan2 from '../jobs/my-first-video/plan.json';
 import brand2 from '../jobs/my-first-video/brand.json';
-import plan3 from '../jobs/veron-promo/plan.json';
-import brand3 from '../jobs/veron-promo/brand.json';
+import plan3 from '../jobs/veron-audit/plan.json';
+import brand3 from '../jobs/veron-audit/brand.json';
+import plan4 from '../jobs/veron-promo/plan.json';
+import brand4 from '../jobs/veron-promo/brand.json';
 
 export const jobs: JobData[] = [
   {id: 'example', plan: plan0 as unknown as Plan, brand: brand0 as unknown as Brand},
   {id: 'gallery', plan: plan1 as unknown as Plan, brand: brand1 as unknown as Brand, words: words1 as unknown as Word[]},
   {id: 'my-first-video', plan: plan2 as unknown as Plan, brand: brand2 as unknown as Brand},
-  {id: 'veron-promo', plan: plan3 as unknown as Plan, brand: brand3 as unknown as Brand}
+  {id: 'veron-audit', plan: plan3 as unknown as Plan, brand: brand3 as unknown as Brand},
+  {id: 'veron-promo', plan: plan4 as unknown as Plan, brand: brand4 as unknown as Brand}
 ];

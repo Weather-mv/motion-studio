@@ -1,0 +1,39 @@
+{
+  "assets": [
+    {
+      "file": "logo.png",
+      "source": "Client-supplied, from the V.E.R.O.N. brand guideline upload",
+      "licence": "Client-owned brand asset"
+    },
+    {
+      "file": "bg-dreamy-lavender-gradient-glow.png",
+      "source": "Client-supplied background (\"Dreamy Lavender Gradient Glow.png\"), attached directly to this job's brief",
+      "licence": "Client-owned brand asset"
+    },
+    {
+      "file": "voiceover.mp3",
+      "source": "Client-supplied voiceover recording (\"Hale v1.mp3\")",
+      "licence": "Client-owned recording"
+    },
+    {
+      "file": "brand-guideline.pdf",
+      "source": "Client-supplied: Proctortrack + V.E.R.O.N. Brand Guidelines",
+      "licence": "Client-owned brand asset, reference copy only"
+    },
+    {
+      "file": "fonts/Roboto-Regular.ttf",
+      "source": "Client-supplied Roboto.zip",
+      "licence": "Apache License 2.0 (see fonts/LICENSE.txt)"
+    },
+    {
+      "file": "fonts/Roboto-Bold.ttf",
+      "source": "Client-supplied Roboto.zip",
+      "licence": "Apache License 2.0 (see fonts/LICENSE.txt)"
+    },
+    {
+      "file": "fonts/LICENSE.txt",
+      "source": "Client-supplied Roboto.zip",
+      "licence": "Apache License 2.0"
+    }
+  ]
+}
