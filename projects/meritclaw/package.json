@@ -1,0 +1,24 @@
+{
+  "name": "meritclaw-link-promo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio",
+    "audio": "python3 tools/gen_audio.py",
+    "render:square": "remotion render MeritclawSquare out/Meritclaw_1x1.mp4",
+    "render:vertical": "remotion render MeritclawVertical out/Meritclaw_9x16.mp4",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.539",
+    "@remotion/google-fonts": "4.0.539",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.539"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "typescript": "7.0.2"
+  }
+}

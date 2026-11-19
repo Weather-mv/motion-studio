@@ -1,0 +1,152 @@
+// Meritclaw Link promo: every colour, every line of text and every frame boundary lives here.
+// Frame numbers assume 30 fps. Seconds are shown beside each one.
+
+export const FPS = 30;
+export const TOTAL_FRAMES = 540; // 18.0 s
+
+// ---------- Colours (the only colour literals in the project) ----------
+export const colors = {
+  ink: '#0A0F2C', // background
+  blue: '#0A5CFF', // glowing links, CTA, tagline
+  green: '#00C853', // 3D check marks
+  white: '#FFFFFF', // typography
+} as const;
+
+// Derived tones for lighting, built from the four colours above with CSS color-mix. No new hues.
+export const mix = (a: string, b: string, pctOfA: number) => `color-mix(in srgb, ${a} ${pctOfA}%, ${b})`;
+export const tone = {
+  clay: mix(colors.white, colors.blue, 90), // matte white "clay" for the input field and cards
+  clayDeep: mix(colors.white, colors.ink, 62), // darker clay for the window body
+  recess: mix(colors.ink, 'black', 82), // sunken fields
+  glassHi: mix(colors.white, 'transparent', 42), // glossy highlight
+  glassLo: mix(colors.white, 'transparent', 6),
+  shadow: mix(colors.ink, 'black', 28), // floor shadow
+  muted: mix(colors.white, colors.ink, 62), // subtext on clay
+  skeleton: mix(colors.ink, colors.white, 16), // placeholder bars on clay
+} as const;
+
+// ---------- Text ----------
+export const text = {
+  headlines: {
+    paste: '1. Paste any link.',
+    verify: '2. Share the monitored version.',
+    monitor: '3. Whoever opens it is verified and monitored.',
+  },
+  close: {
+    title: 'Meritclaw Link.', // white
+    tagline: 'Proctoring without the setup.', // Vivid Blue
+    cta: 'Book a Demo',
+  },
+  // Illustrative UI copy. None of it is a product claim.
+  ui: {
+    placeholder: 'Paste a link here',
+    sampleUrl: 'https://campus-lms.example/courses/biology-101/quiz/final?session=4821&ref=lms',
+    capsule: 'Meritclaw Link',
+    lmsTitle: 'Quiz',
+    slotLabel: 'Quiz link',
+    status: 'Active Monitoring',
+    reportTitle: 'Integrity Report',
+    reportRows: ['Verified', 'Monitored'],
+  },
+  ctaUrl: 'https://meritclaw.com', // the whole end-card is wrapped in a link to this
+  logoAlt: 'Meritclaw',
+} as const;
+
+// ---------- Type ----------
+export const type = {
+  headlineSize: {square: 60, vertical: 80}, // Roboto Bold 700
+  subSize: {square: 40, vertical: 52}, // Roboto Regular 400
+} as const;
+
+// ---------- Safe zones (fraction of height kept clear) ----------
+export const safe = {
+  square: {top: 0.05, bottom: 0.05},
+  vertical: {top: 0.15, bottom: 0.15}, // 288 px top and bottom on 1920
+} as const;
+
+// ---------- Logo ----------
+// No Meritclaw logo file was supplied. null draws a code-made placeholder mark.
+// To use the real one: put it in public/logo.png and set this to 'logo.png'.
+export const logoFile: string | null = null;
+
+// ---------- Timing (frames at 30 fps) ----------
+export const t = {
+  // Scene 1, Paste: frames 0-120 (0-4 s)
+  s1: {
+    start: 0,
+    end: 120, // 4.0 s
+    headlineIn: 4, // 0.13 s
+    fieldIn: 0, // 0.0 s: field springs up from the floor
+    cursorIn: 6, // 0.20 s: cursor starts travelling
+    click: 32, // 1.07 s: cursor presses the field
+    typeStart: 36, // 1.20 s: first character
+    typeEnd: 80, // 2.67 s: last character (44 frames)
+    morphStart: 84, // 2.80 s: field collapses into the capsule
+    morphEnd: 100, // 3.33 s
+    pop: 98, // 3.27 s: capsule pops out of the screen
+  },
+  // Scene 2, Verify: frames 120-240 (4-8 s)
+  s2: {
+    start: 120, // 4.0 s
+    headlineIn: 124, // 4.13 s
+    windowIn: 118, // 3.93 s: LMS window rises in just before the cut
+    dropStart: 138, // 4.60 s: capsule leaves the pop height
+    dropEnd: 160, // 5.33 s: capsule seated in the slot
+    check: 168, // 5.60 s: green check snaps onto the avatar
+    answerPick: 200, // 6.67 s: an answer gets selected
+    end: 240, // 8.0 s
+  },
+  // Scene 3, Monitor: frames 240-390 (8-13 s)
+  s3: {
+    start: 240, // 8.0 s
+    headlineIn: 244, // 8.13 s
+    statusIn: 244, // 8.13 s: status bar pops in
+    ffStart: 252, // 8.40 s: UI fast-forwards
+    ffEnd: 328, // 10.93 s
+    tickEvery: 4, // 0.13 s between ticks
+    windowBack: 330, // 11.0 s: window sinks back to make room
+    docDrop: 322, // 10.73 s: report leaves the top of the frame
+    docLand: 346, // 11.53 s: impact (thud, shake, shock ring)
+    sealStamp: 366, // 12.2 s: check seal stamps onto the report
+    end: 390, // 13.0 s
+  },
+  // Scene 4, Close: frames 390-540 (13-18 s)
+  s4: {
+    start: 390, // 13.0 s
+    fadeEnd: 410, // 13.67 s: document, window and status bar are gone
+    headlineOut: 384, // 12.8 s: scene 3 headline leaves
+    logo: 404, // 13.47 s: logo pops in
+    title: 418, // 13.93 s: "Meritclaw Link."
+    tagline: 432, // 14.4 s: "Proctoring without the setup."
+    cta: 450, // 15.0 s: Book a Demo scales in
+    endHit: 528, // 17.6 s: final strong beat of the music
+    end: 540, // 18.0 s
+  },
+} as const;
+
+// ---------- Audio ----------
+// Music and SFX are generated by tools/gen_audio.py (original synthesis, no third-party samples).
+// The music is 150 BPM, so one beat = 12 frames and the downbeats fall on frames 0, 48, 96, ...
+export const audio = {
+  music: 'audio/fast_tech_bed.mp3',
+  musicVolume: 0.5, // bed level through scenes 1-3
+  musicSwellVolume: 0.8, // level reached by the final beat
+  // Frame where each SFX file starts playing. Each sound's transient sits at its own frame 0 unless noted.
+  sfx: [
+    {file: 'audio/sfx_click.wav', at: t.s1.click, volume: 0.7}, // 1.07 s cursor click
+    {file: 'audio/sfx_snap.wav', at: t.s1.morphStart, volume: 0.8}, // 2.80 s paste / snap into capsule
+    {file: 'audio/sfx_pop.wav', at: t.s1.pop, volume: 0.8}, // 3.27 s capsule pops out
+    {file: 'audio/sfx_whoosh.wav', at: t.s2.windowIn - 4, volume: 0.7}, // 3.8 s window whoosh (peaks ~0.25 s in)
+    {file: 'audio/sfx_whoosh.wav', at: t.s2.dropStart - 4, volume: 0.6}, // 4.5 s capsule drop whoosh
+    {file: 'audio/sfx_click.wav', at: t.s2.dropEnd - 2, volume: 0.8}, // 5.27 s capsule seats
+    {file: 'audio/sfx_chime.wav', at: t.s2.check, volume: 0.8}, // 5.6 s digital chime on the check
+    {file: 'audio/sfx_pop.wav', at: t.s3.statusIn, volume: 0.6}, // 8.13 s status bar pops in
+    {file: 'audio/sfx_ticks.wav', at: t.s3.ffStart, volume: 0.5}, // 8.4 s fast ticking (19 ticks, 4 frames apart)
+    {file: 'audio/sfx_whoosh.wav', at: t.s3.docDrop - 8, volume: 0.8}, // 10.47 s report falling
+    {file: 'audio/sfx_thud.wav', at: t.s3.docLand, volume: 1.0}, // 11.53 s heavy thud
+    {file: 'audio/sfx_chime.wav', at: t.s3.sealStamp, volume: 0.55}, // 12.2 s seal chime
+    {file: 'audio/sfx_pop.wav', at: t.s4.logo, volume: 0.7}, // 13.47 s logo pop
+    {file: 'audio/sfx_pop.wav', at: t.s4.cta, volume: 0.8}, // 15.0 s CTA scales in
+    {file: 'audio/sfx_click.wav', at: t.s4.cta + 6, volume: 0.6}, // 15.2 s CTA settles
+  ],
+} as const;
